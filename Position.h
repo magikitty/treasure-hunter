@@ -11,12 +11,12 @@ private:
     int yCoordinate;
 public:
     Position();
-    Position(int xCoordinate, int yCoordinate);
-    void setCoordinates(int xCoordinate, int yCoordinate);
+    Position(int xPosition, int yPosition);
+    void setCoordinates(int xPosition, int yPosition);
     int getX() const;
     int getY() const;
-    void setX(int xCoordinate);
-    void setY(int yCoordinate);
+    void setX(int xPosition);
+    void setY(int yPosition);
 };
 
 

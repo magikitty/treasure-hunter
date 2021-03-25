@@ -8,14 +8,14 @@ Position::Position() {
     this->yCoordinate = 0;
 }
 
-Position::Position(int xCoordinate, int yCoordinate) {
-    this->xCoordinate = xCoordinate;
-    this->yCoordinate = yCoordinate;
+Position::Position(int xPosition, int yPosition) {
+    this->xCoordinate = xPosition;
+    this->yCoordinate = yPosition;
 }
 
-void Position::setCoordinates(int xCoordinate, int yCoordinate) {
-    this->xCoordinate = xCoordinate;
-    this->yCoordinate = yCoordinate;
+void Position::setCoordinates(int xPosition, int yPosition) {
+    this->xCoordinate = xPosition;
+    this->yCoordinate = yPosition;
 }
 
 int Position::getX() const {
@@ -26,10 +26,10 @@ int Position::getY() const {
     return this->yCoordinate;
 }
 
-void Position::setX(int xCoordinate) {
-    this->xCoordinate = xCoordinate;
+void Position::setX(int xPosition) {
+    this->xCoordinate = xPosition;
 }
 
-void Position::setY(int yCoordinate) {
-    this->yCoordinate = yCoordinate;
+void Position::setY(int yPosition) {
+    this->yCoordinate = yPosition;
 }
