@@ -16,6 +16,7 @@ private:
 public:
     std::string getName() const;
     void setName(std::string namePlayer);
+    void move(std::string action);
 };
 
 
