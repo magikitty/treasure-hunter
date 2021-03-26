@@ -9,6 +9,9 @@ Dungeon::Dungeon(int width, int height) {
     this->height = height;
     this->dungeonMap = new char *[height];
 
+    // Generate pseudo random number
+    srand(time(NULL));
+
     // Make two dimensional array by adding an array to each element
     for (int i = 0; i < height; ++i) {
         dungeonMap[i] = new char[width];
@@ -20,7 +23,13 @@ Dungeon::Dungeon(int width, int height) {
             if (i == 0 || i == (height - 1) || j == 0 || j == (width - 1)) {
                 dungeonMap[i][j] = this->getSymbolWall();
             } else {
-                dungeonMap[i][j] = this->getSymbolFloor();
+                // Add random walls inside dungeonMap
+                int numRandom = rand() % 100;
+                if (numRandom < 10) {
+                    dungeonMap[i][j] = this->getSymbolWall();
+                } else {
+                    dungeonMap[i][j] = this->getSymbolFloor();
+                }
             }
         }
     }
