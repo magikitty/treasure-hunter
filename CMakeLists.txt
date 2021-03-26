@@ -3,4 +3,4 @@ project(treasure-hunter)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(treasure-hunter main.cpp GameObject.cpp GameObject.h Position.cpp Position.h Dungeon.cpp Dungeon.h Player.cpp Player.h Monster.cpp Monster.h Gem.cpp Gem.h)
+add_executable(treasure-hunter main.cpp gameObjects/GameObject.cpp gameObjects/GameObject.h helperClasses/Position.cpp helperClasses/Position.h helperClasses/Dungeon.cpp helperClasses/Dungeon.h gameObjects/Player.cpp gameObjects/Player.h gameObjects/Monster.cpp gameObjects/Monster.h gameObjects/Gem.cpp gameObjects/Gem.h Constants.h)

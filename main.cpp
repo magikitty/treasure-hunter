@@ -2,8 +2,8 @@
 // Programming Languages 2
 
 #include <iostream>
-#include "Dungeon.h"
-#include "Player.h"
+#include "helperClasses/Dungeon.h"
+#include "gameObjects/Player.h"
 #include "Constants.h"
 
 using namespace std;
@@ -21,7 +21,8 @@ int main() {
     player.setName(getUserInputString("Enter your name: "));
     cout << "Hello " << player.getName() << "!" << endl;
 
-    while (!QUIT_GAME) {
+    // Endless loop is terminated by quitGame()
+    while (true) {
         gameLoop(player);
     }
 
@@ -53,6 +54,7 @@ void quitGame(string playerAction) {
     string quitInput;
 
     if (playerAction == PORTAL_OUT) {
-        QUIT_GAME = true;
+        cout << "Quitting game. Bye bye!" << endl;
+        exit(0);
     }
 }

@@ -1,6 +1,11 @@
 #include <string>
 using namespace std;
 
+
+#ifndef TREASURE_HUNTER_CONSTANTS_H
+#define TREASURE_HUNTER_CONSTANTS_H
+
+
 /*****************************************************************************/
 /* Messages */
 /*****************************************************************************/
@@ -18,8 +23,5 @@ const string MOVE_DOWN = "s";
 const string MOVE_RIGHT = "d";
 const string PORTAL_OUT = "p";
 
-/*****************************************************************************/
-/* Quitting game (quit game if QUIT_GAME bool is true) */
-/*****************************************************************************/
 
-bool QUIT_GAME = false;
+#endif //TREASURE_HUNTER_CONSTANTS_H

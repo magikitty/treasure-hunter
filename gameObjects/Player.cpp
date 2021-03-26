@@ -2,7 +2,6 @@
 // Programming Languages 2
 
 #include "Player.h"
-#include "Constants.h"
 #include <iostream>
 
 std::string Player::getName() const {
