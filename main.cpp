@@ -14,11 +14,11 @@ void loadLevel();
 void quitGame(string playerAction);
 
 int main() {
-    cout << "Welcome to Treasure Hunter!" << endl;
+    cout << MESSAGE_WELCOME << endl;
 
     // Instantiate player, set player name
     Player player;
-    player.setName(getUserInputString("Enter your name: "));
+    player.setName(getUserInputString(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
     // Endless loop is terminated by quitGame()
@@ -29,6 +29,7 @@ int main() {
     return 0;
 }
 
+// Prints message and returns user input
 string getUserInputString(string message) {
     string userInput;
     cout << message;
@@ -45,11 +46,13 @@ void gameLoop(Player player) {
     player.move(playerAction);
 }
 
+// Sets up level to display to user
 void loadLevel() {
     Dungeon dungeon(10, 7);
     dungeon.printDungeon();
 }
 
+// Quits game if user portals out
 void quitGame(string playerAction) {
     string quitInput;
 

@@ -12,6 +12,8 @@ using namespace std;
 
 const string MESSAGE_PLAYER_ACTION = "Enter action (wasd to move, p to portal"
                                      " out): ";
+const string MESSAGE_WELCOME = "Welcome to Treasure Hunter!";
+const string MESSAGE_ENTER_NAME = "Enter your name: ";
 
 /*****************************************************************************/
 /* Movement & player commands */
