@@ -25,5 +25,13 @@ const string MOVE_DOWN = "s";
 const string MOVE_RIGHT = "d";
 const string PORTAL_OUT = "p";
 
+/*****************************************************************************/
+/* Game object constants */
+/*****************************************************************************/
+
+const char SYMBOL_PLAYER = '@';
+const int PLAYER_ENERGY_START = 100;
+const string PLAYER_NAME_DEFAULT = "Treasure Hunter";
+const int PLAYER_POINTS_START = 0;
 
 #endif //TREASURE_HUNTER_CONSTANTS_H

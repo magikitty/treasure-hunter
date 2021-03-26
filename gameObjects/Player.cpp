@@ -5,10 +5,10 @@
 #include <iostream>
 #include "../Constants.h"
 
-Player::Player() {
-    this->setSymbol('@');
-    this->energy = 100;
-    this->name = "Treasure Hunter";
+Player::Player() : GameObject(SYMBOL_PLAYER) {
+    this->energy = PLAYER_ENERGY_START;
+    this->name = PLAYER_NAME_DEFAULT;
+    this->points = PLAYER_POINTS_START;
 }
 
 std::string Player::getName() const {
