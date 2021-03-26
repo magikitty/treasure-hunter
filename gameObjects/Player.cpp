@@ -3,13 +3,28 @@
 
 #include "Player.h"
 #include <iostream>
+#include "../Constants.h"
+
+Player::Player() {
+    this->setSymbol('@');
+    this->energy = 100;
+    this->name = "Treasure Hunter";
+}
 
 std::string Player::getName() const {
     return this->name;
 }
 
+int Player::getEnergy() {
+    return this->energy;
+}
+
 void Player::setName(std::string namePlayer) {
     this->name = namePlayer;
+}
+
+void Player::setEnergy(int energy) {
+    this->energy = energy;
 }
 
 // Dummy function for determining how player moves

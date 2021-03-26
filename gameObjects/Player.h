@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "GameObject.h"
-#include "../Constants.h"
 
 #ifndef TREASURE_HUNTER_PLAYER_H
 #define TREASURE_HUNTER_PLAYER_H
@@ -15,8 +14,11 @@ private:
     int points;
     std::string name;
 public:
+    Player();
     std::string getName() const;
+    int getEnergy();
     void setName(std::string namePlayer);
+    void setEnergy(int energy);
     void move(std::string action);
 };
 
