@@ -16,6 +16,7 @@ private:
     char **dungeonMap;
 public:
     Dungeon(int width, int height);
+    ~Dungeon();
     char getSymbolWall() const;
     char getSymbolFloor() const;
     int getWidth() const;

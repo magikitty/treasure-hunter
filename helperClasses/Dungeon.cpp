@@ -35,6 +35,13 @@ Dungeon::Dungeon(int width, int height) {
     }
 }
 
+Dungeon::~Dungeon() {
+    for (int i = 0; i < this->getHeight(); i++) {
+        delete[] this->dungeonMap[i];
+    }
+    delete[] this->dungeonMap;
+}
+
 char Dungeon::getSymbolFloor() const {
     return this->symbolFloor;
 }
