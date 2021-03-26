@@ -12,7 +12,8 @@ private:
     char symbolEntrance;
     int width;
     int height;
-    char *dungeonMap;
+    // pointer to a pointer to a char
+    char **dungeonMap;
 public:
     Dungeon(int width, int height);
     char getSymbolWall() const;

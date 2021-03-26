@@ -7,27 +7,20 @@
 Dungeon::Dungeon(int width, int height) {
     this->width = width;
     this->height = height;
-    this->dungeonMap = new char[height * width];
+    this->dungeonMap = new char *[height];
 
-    // Generate pseudo random number
-    srand(time(NULL));
+    // Make two dimensional array by adding an array to each element
+    for (int i = 0; i < height; ++i) {
+        dungeonMap[i] = new char[width];
+    }
 
-    // Add symbols for floor and walls to table
-    for (int i = 0; i < (width * height); i++) {
-        if (i < width || i % width == 0 || (i + 1) % width == 0 ||
-            i == (width * height) - 1) {
-            dungeonMap[i] = this->getSymbolWall();
-        } else if (i == (width * (height - 1)) + 1) {
-            for (int j = 0; j < width; j++) {
-                dungeonMap[i] = this->getSymbolWall();
-                i++;
-            }
-        } else {
-            int numRandom = rand() % 100;
-            if (numRandom < 10) {
-                dungeonMap[i] = this->getSymbolWall();
+    // Add walls and floors to array
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (i == 0 || i == (height - 1) || j == 0 || j == (width - 1)) {
+                dungeonMap[i][j] = this->getSymbolWall();
             } else {
-                dungeonMap[i] = this->getSymbolFloor();
+                dungeonMap[i][j] = this->getSymbolFloor();
             }
         }
     }
@@ -58,13 +51,11 @@ void Dungeon::setHeight(int height) {
 }
 
 void Dungeon::printDungeon() {
-    int dungeonSize = this->height * this->width;
-
-    for (int i = 0; i < dungeonSize; i++) {
-        if (i != 0 && i % this->width == 0) {
-            std::cout << std::endl;
+    for (int i = 0; i < this->getHeight(); i++) {
+        for (int j = 0; j < this->getWidth(); j++) {
+            std::cout << this->dungeonMap[i][j];
         }
-        std::cout << this->dungeonMap[i];
+        std::cout << std::endl;
     }
     std::cout << std::endl;
 }
