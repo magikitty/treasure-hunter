@@ -11,6 +11,7 @@ using namespace std;
 string getUserInputString(string message);
 void gameLoop(Player player);
 void loadLevel();
+void quitGame(string playerAction);
 
 int main() {
     cout << "Welcome to Treasure Hunter!" << endl;
@@ -20,7 +21,9 @@ int main() {
     player.setName(getUserInputString("Enter your name: "));
     cout << "Hello " << player.getName() << "!" << endl;
 
-    gameLoop(player);
+    while (!QUIT_GAME) {
+        gameLoop(player);
+    }
 
     return 0;
 }
@@ -37,10 +40,19 @@ void gameLoop(Player player) {
     string playerAction;
     cout << MESSAGE_PLAYER_ACTION;
     getline(cin, playerAction);
+    quitGame(playerAction);
     player.move(playerAction);
 }
 
 void loadLevel() {
     Dungeon dungeon(10, 7);
     dungeon.printDungeon();
+}
+
+void quitGame(string playerAction) {
+    string quitInput;
+
+    if (playerAction == PORTAL_OUT) {
+        QUIT_GAME = true;
+    }
 }
