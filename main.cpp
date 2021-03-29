@@ -9,8 +9,8 @@
 using namespace std;
 
 string getUserInputString(string message);
-void gameLoop(Player &player);
-void loadLevel();
+void gameLoop(Player &player, Dungeon &dungeon);
+void loadLevel(Dungeon &dungeon, Player player);
 void quitGame(string playerAction, Player player);
 
 int main() {
@@ -21,9 +21,12 @@ int main() {
     player.setName(getUserInputString(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
+    // Instantiate dungeon
+    Dungeon dungeon(12, 9);
+
     // Infinite loop is terminated by quitGame()
     while (true) {
-        gameLoop(player);
+        gameLoop(player, dungeon);
     }
 
     return 0;
@@ -37,8 +40,8 @@ string getUserInputString(string message) {
     return userInput;
 }
 
-void gameLoop(Player &player) {
-    loadLevel();
+void gameLoop(Player &player, Dungeon &dungeon) {
+    loadLevel(dungeon, player);
     string playerAction;
     cout << MESSAGE_PLAYER_ACTION;
     getline(cin, playerAction);
@@ -46,13 +49,13 @@ void gameLoop(Player &player) {
     player.move(playerAction);
 }
 
-// TODO: prints new random map each time, need to keep same dungeon
 // Sets up level to display to user
-void loadLevel() {
-    Dungeon dungeon(10, 7);
+void loadLevel(Dungeon &dungeon, Player player) {
+//    dungeon.addCharToMap(player.getSymbol(), 1, 1);
     dungeon.printDungeon();
 }
 
+// TODO: refactor
 // Quits game if user portals out
 void quitGame(string playerAction, Player player) {
     string quitInput;
