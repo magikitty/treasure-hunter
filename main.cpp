@@ -55,16 +55,14 @@ void loadLevel(Dungeon &dungeon, Player player) {
     dungeon.printDungeon();
 }
 
-// TODO: refactor
 // Quits game if user portals out
 void quitGame(string playerAction, Player player) {
-    string quitInput;
 
     if (playerAction == PORTAL_OUT) {
-        cout << "Quitting game. Bye bye!" << endl; // debugging
+        cout << MESSAGE_PORTAL_OUT << endl;
         exit(0);
     } else if (player.getEnergy() == 0) {
-        cout << "Player ran out of energy. Game Over." << endl; // debugging
+        cout << MESSAGE_PLAYER_DEAD << endl;
         exit(0);
     }
 }

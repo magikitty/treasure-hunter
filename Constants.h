@@ -1,3 +1,6 @@
+// Elina Widdowson
+// Programming Languages 2
+
 #include <string>
 using namespace std;
 
@@ -14,6 +17,10 @@ const string MESSAGE_PLAYER_ACTION = "Enter action (wasd to move, p to portal"
                                      " out): ";
 const string MESSAGE_WELCOME = "Welcome to Treasure Hunter!";
 const string MESSAGE_ENTER_NAME = "Enter your name: ";
+const string MESSAGE_PORTAL_OUT = "You portal out of the dungeon and so ends "
+                                  "your treasure hunt. Game over.";
+const string MESSAGE_PLAYER_DEAD = "You have run out of energy and perished "
+                                   "in the dungeon. Game over.";
 
 /*****************************************************************************/
 /* Movement & player commands */
