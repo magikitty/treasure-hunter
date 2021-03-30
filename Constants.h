@@ -21,6 +21,7 @@ const string MESSAGE_PORTAL_OUT = "You portal out of the dungeon and so ends "
                                   "your treasure hunt. Game over.";
 const string MESSAGE_PLAYER_DEAD = "You have run out of energy and perished "
                                    "in the dungeon. Game over.";
+const string MESSAGE_GAME_HISTORY = "Here is a history of your game:";
 
 /*****************************************************************************/
 /* Movement & player commands */

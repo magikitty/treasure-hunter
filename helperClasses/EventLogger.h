@@ -12,6 +12,7 @@ class EventLogger {
 private:
     std::vector<std::string> events;
 public:
+    EventLogger();
     void addEvent(std::string event);
     void printEvents();
 };
