@@ -7,38 +7,33 @@
 Dungeon::Dungeon(int width, int height) {
     this->width = width;
     this->height = height;
-    this->dungeonMap = new char *[height];
+    this->dungeonMap = new char[height * width];
 
     // Generate pseudo random number
     srand(time(NULL));
 
-    // Make two dimensional array by adding an array to each element
-    for (int i = 0; i < height; ++i) {
-        dungeonMap[i] = new char[width];
-    }
-
-    // Add walls and floors to array
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            if (i == 0 || i == (height - 1) || j == 0 || j == (width - 1)) {
-                dungeonMap[i][j] = this->getSymbolWall();
+    // Add symbols for floor and walls to dungeon map
+    for (int i = 0; i < (width * height); i++) {
+        if (i < width || i % width == 0 || (i + 1) % width == 0 ||
+            i == (width * height) - 1) {
+            dungeonMap[i] = this->symbolWall;
+        } else if (i == (width * (height - 1)) + 1) {
+            for (int j = 0; j < width; j++) {
+                dungeonMap[i] = this->symbolWall;
+                i++;
+            }
+        } else {
+            int numRandom = rand() % 100;
+            if (numRandom < 10) {
+                dungeonMap[i] = this->symbolWall;
             } else {
-                // Add random walls inside dungeonMap
-                int numRandom = rand() % 100;
-                if (numRandom < 10) {
-                    dungeonMap[i][j] = this->getSymbolWall();
-                } else {
-                    dungeonMap[i][j] = this->getSymbolFloor();
-                }
+                dungeonMap[i] = this->symbolFloor;
             }
         }
     }
 }
 
 Dungeon::~Dungeon() {
-    for (int i = 0; i < this->getHeight(); i++) {
-        delete[] this->dungeonMap[i];
-    }
     delete[] this->dungeonMap;
 }
 
@@ -67,11 +62,24 @@ void Dungeon::setHeight(int height) {
 }
 
 void Dungeon::printDungeon() {
-    for (int i = 0; i < this->getHeight(); i++) {
-        for (int j = 0; j < this->getWidth(); j++) {
-            std::cout << this->dungeonMap[i][j];
+    int mapSize = this->height * this->width;
+    std::cout << std::endl;
+
+    for (int i = 0; i < mapSize; i++) {
+        if (i != 0 && i % this->width == 0) {
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+        std::cout << this->dungeonMap[i];
     }
     std::cout << std::endl;
+}
+
+char Dungeon::getCharAtPosition(int x, int y) const {
+    int indexPosition = x + (this->getWidth() * y);
+    return this->dungeonMap[indexPosition];
+}
+
+void Dungeon::setCharAtPosition(char symbolToAdd, int x, int y) {
+    int indexPosition = x + (this->getWidth() * y);
+    this->dungeonMap[indexPosition] = symbolToAdd;
 }

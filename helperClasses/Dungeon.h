@@ -10,10 +10,8 @@ private:
     char symbolWall = '#';
     char symbolFloor = '.';
     char symbolEntrance;
-    int width;
-    int height;
-    // pointer to a pointer to a char
-    char **dungeonMap;
+    int width, height;
+    char *dungeonMap;
 public:
     Dungeon(int width, int height);
     ~Dungeon();
@@ -24,6 +22,8 @@ public:
     void setWidth(int width);
     void setHeight(int height);
     void printDungeon();
+    char getCharAtPosition(int x, int y) const;
+    void setCharAtPosition(char symbolToAdd, int x, int y);
 };
 
 
