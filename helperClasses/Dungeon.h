@@ -1,6 +1,8 @@
 // Elina Widdowson
 // Programming Languages 2
 
+#include "Position.h"
+
 #ifndef TREASURE_HUNTER_DUNGEON_H
 #define TREASURE_HUNTER_DUNGEON_H
 
@@ -24,7 +26,9 @@ public:
     void printDungeon();
     int getIndexAtPosition(int x, int y) const;
     char getCharAtPosition(int x, int y) const;
+    char getCharAtPosition(Position position) const;
     void setCharAtPosition(char symbolToAdd, int x, int y);
+    void setCharAtPosition(char symbolToAdd, Position position);
 };
 
 

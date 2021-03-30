@@ -82,6 +82,17 @@ char Dungeon::getCharAtPosition(int x, int y) const {
     return this->dungeonMap[this->getIndexAtPosition(x, y)];
 }
 
+char Dungeon::getCharAtPosition(Position position) const {
+    return this->dungeonMap[this->getIndexAtPosition(
+            position.getX(),
+            position.getY())];
+}
+
 void Dungeon::setCharAtPosition(char symbolToAdd, int x, int y) {
     this->dungeonMap[this->getIndexAtPosition(x, y)] = symbolToAdd;
+}
+
+void Dungeon::setCharAtPosition(char symbolToAdd, Position position) {
+    this->dungeonMap[this->getIndexAtPosition(position.getX(), position.getY())]
+            = symbolToAdd;
 }
