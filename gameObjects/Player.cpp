@@ -20,12 +20,20 @@ int Player::getEnergy() {
     return this->energy;
 }
 
+int Player::getPoints() {
+    return this->points;
+}
+
 void Player::setName(std::string namePlayer) {
     this->name = namePlayer;
 }
 
 void Player::setEnergy(int energy) {
     this->energy = energy;
+}
+
+void Player::setPoints(int points) {
+    this->points = points;
 }
 
 // Dummy function for determining how player moves

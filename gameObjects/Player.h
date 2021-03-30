@@ -18,8 +18,10 @@ public:
     Player();
     std::string getName() const;
     int getEnergy();
+    int getPoints();
     void setName(std::string namePlayer);
     void setEnergy(int energy);
+    void setPoints(int points);
     void move(std::string action, Dungeon &dungeon);
 };
 
