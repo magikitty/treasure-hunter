@@ -10,8 +10,11 @@
 using namespace std;
 
 string getUserInputString(string message);
+
 void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger);
+
 void loadLevel(Dungeon &dungeon, Player player);
+
 void quitGame(string playerAction, Player player, EventLogger eventLogger);
 
 int main() {
@@ -23,7 +26,9 @@ int main() {
     cout << "Hello " << player.getName() << "!" << endl;
 
     // Instantiate dungeon
-    Dungeon dungeon(12, 9);
+    Dungeon dungeon(12, 7);
+    dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
+                              player.getPosition().getY());
 
     // Instantiate event logger
     EventLogger eventLogger;
@@ -45,12 +50,15 @@ string getUserInputString(string message) {
 }
 
 void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger) {
+    cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
+    player.getPoints() << " ||";
+
     loadLevel(dungeon, player);
     string playerAction;
     cout << MESSAGE_PLAYER_ACTION;
     getline(cin, playerAction);
     quitGame(playerAction, player, eventLogger);
-    player.move(playerAction);
+    player.move(playerAction, dungeon);
 }
 
 // Sets up level to display to user
@@ -58,7 +66,7 @@ void loadLevel(Dungeon &dungeon, Player player) {
     dungeon.printDungeon();
 }
 
-// Quits game if user portals out
+// Quits game if user portals out or runs out of energy
 void quitGame(string playerAction, Player player, EventLogger eventLogger) {
 
     if (playerAction == PORTAL_OUT) {
