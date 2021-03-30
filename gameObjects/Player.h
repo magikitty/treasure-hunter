@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "GameObject.h"
+#include "../helperClasses/Dungeon.h"
 
 #ifndef TREASURE_HUNTER_PLAYER_H
 #define TREASURE_HUNTER_PLAYER_H
@@ -19,7 +20,7 @@ public:
     int getEnergy();
     void setName(std::string namePlayer);
     void setEnergy(int energy);
-    void move(std::string action);
+    void move(std::string action, Dungeon &dungeon);
 };
 
 
