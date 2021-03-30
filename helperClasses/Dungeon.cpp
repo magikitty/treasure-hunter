@@ -74,12 +74,14 @@ void Dungeon::printDungeon() {
     std::cout << std::endl;
 }
 
+int Dungeon::getIndexAtPosition(int x, int y) const {
+    return (x + (this->getWidth() * y));
+}
+
 char Dungeon::getCharAtPosition(int x, int y) const {
-    int indexPosition = x + (this->getWidth() * y);
-    return this->dungeonMap[indexPosition];
+    return this->dungeonMap[this->getIndexAtPosition(x, y)];
 }
 
 void Dungeon::setCharAtPosition(char symbolToAdd, int x, int y) {
-    int indexPosition = x + (this->getWidth() * y);
-    this->dungeonMap[indexPosition] = symbolToAdd;
+    this->dungeonMap[this->getIndexAtPosition(x, y)] = symbolToAdd;
 }

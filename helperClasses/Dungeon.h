@@ -22,6 +22,7 @@ public:
     void setWidth(int width);
     void setHeight(int height);
     void printDungeon();
+    int getIndexAtPosition(int x, int y) const;
     char getCharAtPosition(int x, int y) const;
     void setCharAtPosition(char symbolToAdd, int x, int y);
 };
