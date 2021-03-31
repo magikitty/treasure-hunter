@@ -12,4 +12,5 @@ add_executable(treasure-hunter main.cpp
         gameObjects/Gem.cpp gameObjects/Gem.h
         Constants.h
         gameObjects/MagicApple.cpp gameObjects/MagicApple.h
-        helperClasses/EventLogger.cpp helperClasses/EventLogger.h)
+        helperClasses/EventLogger.cpp helperClasses/EventLogger.h
+        helperClasses/Game.cpp helperClasses/Game.h)

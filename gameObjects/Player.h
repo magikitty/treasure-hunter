@@ -23,6 +23,7 @@ public:
     void setEnergy(int energy);
     void setPoints(int points);
     void move(std::string action, Dungeon &dungeon);
+    void interact(GameObject gameObject);
 };
 
 
