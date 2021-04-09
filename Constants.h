@@ -34,7 +34,7 @@ const string MOVE_RIGHT = "d";
 const string PORTAL_OUT = "p";
 
 /*****************************************************************************/
-/* Game object constants */
+/* GameManager object constants */
 /*****************************************************************************/
 
 const char SYMBOL_PLAYER = '@';

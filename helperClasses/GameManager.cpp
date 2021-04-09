@@ -20,6 +20,36 @@ void GameManager::startGame() {
     Player player;
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
+
+    // Instantiate event logger
+    EventLogger eventLogger;
+    // Set game level to 1
+    this->level.setLevelNumber(1);
+    // Instantiate dungeon and set Player character
+    Dungeon dungeon(12, 7);
+    dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
+                              player.getPosition().getY());
+
+    // Infinite loop is terminated by quitGame()
+    while (true) {
+        gameLoop(player, dungeon, eventLogger);
+    }
+}
+
+void GameManager::gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger) {
+    cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
+         player.getPoints() << " ||";
+
+    loadLevel(dungeon, player);
+    string playerAction;
+    cout << MESSAGE_PLAYER_ACTION;
+    getline(cin, playerAction);
+    quitGame(playerAction, player, eventLogger);
+    player.move(playerAction, dungeon);
+}
+
+void GameManager::loadLevel(Dungeon &dungeon, Player player) {
+    dungeon.printDungeon();
 }
 
 // Quits game if user portals out or runs out of energy

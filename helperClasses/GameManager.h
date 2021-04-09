@@ -15,9 +15,9 @@ class GameManager {
 private:
     Level level;
 public:
-    void gameLoop();
-    std::string getUserInput(std::string message);
-    void loadLevel();
+    void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger);
+    string getUserInput(string message);
+    void loadLevel(Dungeon &dungeon, Player player);
     void quitGame(string playerAction, Player player, EventLogger eventLogger);
     void startGame();
 };
