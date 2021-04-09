@@ -1,6 +1,8 @@
 // Elina Widdowson
 // Programming Languages 2
 
+#include "../Constants.h"
+
 #ifndef TREASURE_HUNTER_LEVEL_H
 #define TREASURE_HUNTER_LEVEL_H
 
@@ -11,9 +13,11 @@ private:
     int movementCost;
     int levelNumber, levelMaxNumber;
 public:
-    int getMovementCost();
+    explicit Level(int levelNum);
+    int getMovementCost() const;
     void setLevelNumber(int number);
-    int getLevelNumber();
+    int getLevelNumber() const;
+    void setMovementCost();
 };
 
 
