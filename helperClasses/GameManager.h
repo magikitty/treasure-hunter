@@ -15,9 +15,10 @@ class GameManager {
 private:
     Level level;
 public:
+    explicit GameManager(int levelNumber);
     void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger);
     string getUserInput(string message);
-    void loadLevel(Dungeon &dungeon, Player player);
+    void loadLevel(Dungeon &dungeon);
     void quitGame(string playerAction, Player player, EventLogger eventLogger);
     void startGame();
 };

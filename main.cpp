@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    GameManager gameManager{};
+    GameManager gameManager(1);
     gameManager.startGame();
 
     return 0;

@@ -5,7 +5,11 @@
 
 using namespace std;
 
-// Prints message and returns user input
+GameManager::GameManager(int levelNumber) : level(levelNumber) {
+    this->level = Level(levelNumber);
+}
+
+// Print message and returns user input
 string GameManager::getUserInput(string message) {
         string userInput;
         cout << message;
@@ -13,6 +17,7 @@ string GameManager::getUserInput(string message) {
         return userInput;
 }
 
+// Start game by instantiating necessary game elements
 void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
 
@@ -23,8 +28,6 @@ void GameManager::startGame() {
 
     // Instantiate event logger
     EventLogger eventLogger;
-    // Set game level to 1
-    this->level.setLevelNumber(1);
     // Instantiate dungeon and set Player character
     Dungeon dungeon(12, 7);
     dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
@@ -36,23 +39,18 @@ void GameManager::startGame() {
     }
 }
 
+// Update the game each time player makes action
 void GameManager::gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger) {
     cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
-         player.getPoints() << " ||";
+         player.getPoints() << " || Level: " << this->level.getLevelNumber();
 
-    loadLevel(dungeon, player);
-    string playerAction;
-    cout << MESSAGE_PLAYER_ACTION;
-    getline(cin, playerAction);
+    dungeon.printDungeon();
+    string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
     quitGame(playerAction, player, eventLogger);
     player.move(playerAction, dungeon);
 }
 
-void GameManager::loadLevel(Dungeon &dungeon, Player player) {
-    dungeon.printDungeon();
-}
-
-// Quits game if user portals out or runs out of energy
+// Quit game if user portals out or runs out of energy
 void GameManager::quitGame(string playerAction, Player player, EventLogger eventLogger) {
     if (playerAction == PORTAL_OUT) {
         cout << MESSAGE_PORTAL_OUT << endl;
