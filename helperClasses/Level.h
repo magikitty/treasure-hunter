@@ -6,9 +6,14 @@
 
 
 class Level {
-    int size;
+private:
+    int mapWidth, mapHeight;
     int movementCost;
     int levelNumber, levelMaxNumber;
+public:
+    int getMovementCost();
+    void setLevelNumber(int number);
+    int getLevelNumber();
 };
 
 
