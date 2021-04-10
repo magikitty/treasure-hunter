@@ -1,7 +1,7 @@
 // Elina Widdowson
 // Programming Languages 2
 
-#include "Position.h"
+#include "../helperClasses/Position.h"
 
 #ifndef TREASURE_HUNTER_DUNGEON_H
 #define TREASURE_HUNTER_DUNGEON_H

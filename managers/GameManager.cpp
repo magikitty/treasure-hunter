@@ -5,8 +5,8 @@
 
 using namespace std;
 
-GameManager::GameManager(int levelNumber) : level(levelNumber) {
-    this->level = Level(levelNumber);
+GameManager::GameManager(int levelNumber) {
+    this->levelCurrent = levelNumber;
 }
 
 // TODO: write game instructions
@@ -19,10 +19,14 @@ void GameManager::startGame() {
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
+    // Instantiate level manager
+    LevelManager levelManager(1);
+
     // Instantiate event logger
     EventLogger eventLogger;
 
-    Dungeon dungeon = loadLevel(player);
+    // Load level with dungeon
+    Dungeon dungeon = levelManager.loadLevel(player);
 
     // Infinite loop is terminated by checkShouldQuitGame()
     while (true) {
@@ -42,27 +46,12 @@ string GameManager::getUserInput(string message) {
 void GameManager::gameLoop(Player &player, Dungeon &dungeon,
                            EventLogger &eventLogger) {
     cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
-         player.getPoints() << " || Level: " << this->level.getLevelNumber();
+         player.getPoints() << " || Level: " << this->levelCurrent;
 
     dungeon.printDungeon();
     string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
     checkShouldQuitGame(playerAction, player, eventLogger);
     player.move(playerAction, dungeon);
-}
-
-Dungeon GameManager::loadLevel(Player &player) {
-    // Instantiate dungeon and set Player character
-    Dungeon dungeon(12, 7);
-    dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
-                              player.getPosition().getY());
-
-    this->level.addMonster(Monster('M', 50, 3, 5));
-    dungeon.setCharAtPosition(
-            this->level.getMonsters()[0].getSymbol(),
-            this->level.getMonsters()[0].getPosition().getX(),
-            this->level.getMonsters()[0].getPosition().getY());
-
-    return dungeon;
 }
 
 // TODO: add confirmation for quit

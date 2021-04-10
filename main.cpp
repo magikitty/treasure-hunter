@@ -2,7 +2,7 @@
 // Programming Languages 2
 
 #include <iostream>
-#include "helperClasses/GameManager.h"
+#include "managers/GameManager.h"
 
 using namespace std;
 

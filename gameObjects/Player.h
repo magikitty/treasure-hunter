@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "GameObject.h"
-#include "../helperClasses/Dungeon.h"
+#include "../levels/Dungeon.h"
 
 #ifndef TREASURE_HUNTER_PLAYER_H
 #define TREASURE_HUNTER_PLAYER_H
