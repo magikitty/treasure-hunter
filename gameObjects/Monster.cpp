@@ -8,7 +8,7 @@ Monster::Monster(int strength) {
     this->strength = strength;
 }
 
-Monster::Monster(char symbol, int strength) : GameObject(symbol) {
+Monster::Monster(char symbol, int strength, int x, int y) : GameObject(symbol, x, y) {
     this->strength = strength;
 }
 

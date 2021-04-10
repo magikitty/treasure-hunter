@@ -12,7 +12,7 @@ private:
     int strength;
 public:
     explicit Monster(int strength);
-    Monster(char symbol, int strength);
+    Monster(char symbol, int strength, int x, int y);
     Monster(int x, int y);
     Monster(char symbol, int x, int y);
     int getStrength() const;
