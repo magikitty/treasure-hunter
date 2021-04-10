@@ -18,9 +18,10 @@ public:
     explicit GameManager(int levelNumber);
     void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger);
     string getUserInput(string message);
-    void loadLevel(Dungeon &dungeon);
-    void quitGame(string playerAction, Player player, EventLogger eventLogger);
+    Dungeon loadLevel(Player &player);
+    void checkShouldQuitGame(string playerAction, Player player, EventLogger eventLogger);
     void startGame();
+    void quitGame() const;
 };
 
 

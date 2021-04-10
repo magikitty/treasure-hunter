@@ -9,14 +9,7 @@ GameManager::GameManager(int levelNumber) : level(levelNumber) {
     this->level = Level(levelNumber);
 }
 
-// Print message and returns user input
-string GameManager::getUserInput(string message) {
-        string userInput;
-        cout << message;
-        getline(cin, userInput);
-        return userInput;
-}
-
+// TODO: write game instructions
 // Start game by instantiating necessary game elements
 void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
@@ -28,37 +21,64 @@ void GameManager::startGame() {
 
     // Instantiate event logger
     EventLogger eventLogger;
-    // Instantiate dungeon and set Player character
-    Dungeon dungeon(12, 7);
-    dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
-                              player.getPosition().getY());
 
-    // Infinite loop is terminated by quitGame()
+    Dungeon dungeon = loadLevel(player);
+
+    // Infinite loop is terminated by checkShouldQuitGame()
     while (true) {
         gameLoop(player, dungeon, eventLogger);
     }
 }
 
+// Print message and returns user input
+string GameManager::getUserInput(string message) {
+    string userInput;
+    cout << message;
+    getline(cin, userInput);
+    return userInput;
+}
+
 // Update the game each time player makes action
-void GameManager::gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger) {
+void GameManager::gameLoop(Player &player, Dungeon &dungeon,
+                           EventLogger &eventLogger) {
     cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
          player.getPoints() << " || Level: " << this->level.getLevelNumber();
 
     dungeon.printDungeon();
     string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
-    quitGame(playerAction, player, eventLogger);
+    checkShouldQuitGame(playerAction, player, eventLogger);
     player.move(playerAction, dungeon);
 }
 
-// Quit game if user portals out or runs out of energy
-void GameManager::quitGame(string playerAction, Player player, EventLogger eventLogger) {
+Dungeon GameManager::loadLevel(Player &player) {
+    // Instantiate dungeon and set Player character
+    Dungeon dungeon(12, 7);
+    dungeon.setCharAtPosition(player.getSymbol(), player.getPosition().getX(),
+                              player.getPosition().getY());
+
+    this->level.addMonster(Monster('M', 50, 3, 5));
+    dungeon.setCharAtPosition(
+            this->level.getMonsters()[0].getSymbol(),
+            this->level.getMonsters()[0].getPosition().getX(),
+            this->level.getMonsters()[0].getPosition().getY());
+
+    return dungeon;
+}
+
+// TODO: add confirmation for quit
+// Call to quit game if user portals out or runs out of energy
+void GameManager::checkShouldQuitGame(string playerAction, Player player, EventLogger
+eventLogger) {
     if (playerAction == PORTAL_OUT) {
         cout << MESSAGE_PORTAL_OUT << endl;
         eventLogger.printEvents();
-        exit(0);
+        quitGame();
     } else if (player.getEnergy() == 0) {
         cout << MESSAGE_PLAYER_DEAD << endl;
         eventLogger.printEvents();
-        exit(0);
+        quitGame();
     }
 }
+
+// Quit game
+void GameManager::quitGame() const { exit(0); }
