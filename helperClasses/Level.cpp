@@ -24,3 +24,11 @@ int Level::getMovementCost() const {
 void Level::setMovementCost() {
     this->movementCost = this->getLevelNumber();
 }
+
+std::vector<Monster> Level::getMonsters() {
+    return this->monsters;
+}
+
+void Level::addMonster(Monster monster) {
+    this->monsters.push_back(monster);
+}
