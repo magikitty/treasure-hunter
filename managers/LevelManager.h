@@ -18,7 +18,6 @@ public:
     void newDungeon(Player &player);
     void setLevel(int levelNumber);
     void selectAndPrintLevel(Player &player, int levelCurrent);
-    Dungeon loadLevel(Player &player, int levelCurrent);
 };
 
 

@@ -40,15 +40,11 @@ string GameManager::getUserInput(string message) {
 void GameManager::gameLoop(Player &player, LevelManager &levelManager,
                            EventLogger &eventLogger) {
 
-    levelManager.selectAndPrintLevel(player, this->levelCurrent);
-//    Dungeon dungeon = levelManager.loadLevel(player, this->levelCurrent);
-
     printPlayerStats(player);
-//    dungeon.printDungeon();
+    levelManager.selectAndPrintLevel(player, this->levelCurrent);
     string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
     checkShouldQuitGame(playerAction, player, eventLogger);
     player.move(playerAction, levelManager.dungeon);
-//    player.move(playerAction, dungeon);
 }
 
 void GameManager::printPlayerStats(Player &player) const {
