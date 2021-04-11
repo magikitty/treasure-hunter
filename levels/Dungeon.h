@@ -19,6 +19,7 @@ public:
     Dungeon(int width, int height);
     ~Dungeon();
     char* makeDungeonMap();
+    Dungeon& operator= (const Dungeon &dungeon); // operator overload
     char getSymbolWall() const;
     char getSymbolFloor() const;
     int getWidth() const;

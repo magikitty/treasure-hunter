@@ -11,37 +11,38 @@ void LevelManager::setLevel(int levelNumber) {
     this->level.setLevelNumber(levelNumber);
 }
 
-void LevelManager::selectAndPrintLevel(Player &player, int
-levelCurrent) {
+// Load new level or print current level
+void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
     if (levelCurrent > this->getLevel()) {
-        cout << "Making new level" << endl;
-        dungeonNew = newDungeon(player);
+        newDungeon(player);
         this->setLevel(getLevel() + 1);
     }
-    dungeonNew.printDungeon();
+    this->dungeon.printDungeon();
 }
 
-Dungeon LevelManager::newDungeon(Player &player) {
-    Dungeon dungeon(12, 7);
+// Create new dungeon, add player and monster
+void LevelManager::newDungeon(Player &player) {
+    Dungeon dungeonNew(12, 8);
 
-    dungeon.setCharAtPosition(player.getSymbol(),
-                              player.getPosition().getX(),
-                              player.getPosition().getY());
+    dungeonNew.setCharAtPosition(player.getSymbol(),
+                                 player.getPosition().getX(),
+                                 player.getPosition().getY());
 
     this->level.addMonster(Monster('M', 50, 3, 5));
-    dungeon.setCharAtPosition(
+    dungeonNew.setCharAtPosition(
             this->level.getMonsters()[0].getSymbol(),
             this->level.getMonsters()[0].getPosition().getX(),
             this->level.getMonsters()[0].getPosition().getY());
 
-    return dungeon;
-};
+    this->dungeon = dungeonNew;
+}
 
+// TODO: remove if unnecessary
 Dungeon LevelManager::loadLevel(Player &player, int levelCurrent) {
     if (levelCurrent > this->getLevel()) {
         cout << "LOADING NEW LEVEL" << endl; // debugging
         cout << "current level is " << levelCurrent << " levelmanager level is "
-        << this->getLevel() << endl;
+        << this->getLevel() << endl; // debugging
 
         Dungeon dungeon(12, 7);
 
@@ -54,7 +55,7 @@ Dungeon LevelManager::loadLevel(Player &player, int levelCurrent) {
                 this->level.getMonsters()[0].getPosition().getX(),
                 this->level.getMonsters()[0].getPosition().getY());
 
-        dungeon.printDungeon();
+//        dungeon.printDungeon();
 
         this->setLevel(this->getLevel() + 1);
 

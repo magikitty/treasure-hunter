@@ -13,9 +13,9 @@ class LevelManager {
 private:
     Level level;
 public:
-    Dungeon dungeonNew; // TODO refactor with getter-setter
+    Dungeon dungeon; // TODO refactor with getter-setter
     int getLevel() const;
-    Dungeon newDungeon(Player &player);
+    void newDungeon(Player &player);
     void setLevel(int levelNumber);
     void selectAndPrintLevel(Player &player, int levelCurrent);
     Dungeon loadLevel(Player &player, int levelCurrent);

@@ -7,38 +7,13 @@
 Dungeon::Dungeon() {
     this->width = 1;
     this->height = 1;
-    this->dungeonMap = new char[height * width]{'X'};
+    this->dungeonMap = new char[height * width]{'#'};
 }
 
 Dungeon::Dungeon(int width, int height) {
     this->width = width;
     this->height = height;
     this->dungeonMap = makeDungeonMap();
-
-//    this->dungeonMap = new char[height * width];
-//
-//    // Generate pseudo random number
-//    srand(time(NULL));
-//
-//    // Add symbols for floor and walls to dungeon map
-//    for (int i = 0; i < (width * height); i++) {
-//        if (i < width || i % width == 0 || (i + 1) % width == 0 ||
-//            i == (width * height) - 1) {
-//            dungeonMap[i] = this->symbolWall;
-//        } else if (i == (width * (height - 1)) + 1) {
-//            for (int j = 0; j < width; j++) {
-//                dungeonMap[i] = this->symbolWall;
-//                i++;
-//            }
-//        } else {
-//            int numRandom = rand() % 100;
-//            if (numRandom < 10) {
-//                dungeonMap[i] = this->symbolWall;
-//            } else {
-//                dungeonMap[i] = this->symbolFloor;
-//            }
-//        }
-//    }
 }
 
 char * Dungeon::makeDungeonMap() {
@@ -66,8 +41,18 @@ char * Dungeon::makeDungeonMap() {
             }
         }
     }
-
     return dungeonMap;
+}
+
+Dungeon& Dungeon::operator=(const Dungeon &dungeon) {
+    this->width = dungeon.getWidth();
+    this->height = dungeon.getHeight();
+    this->dungeonMap = new char[width * height];
+
+    for (int i = 0; i < (width * height); i++) {
+        this->dungeonMap[i] = (dungeon.dungeonMap[i]);
+    }
+    return *this;
 }
 
 Dungeon::~Dungeon() {
@@ -100,6 +85,7 @@ void Dungeon::setHeight(int height) {
 
 void Dungeon::printDungeon() {
     int mapSize = this->height * this->width;
+
     std::cout << std::endl;
 
     for (int i = 0; i < mapSize; i++) {

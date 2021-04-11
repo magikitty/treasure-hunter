@@ -47,7 +47,7 @@ void GameManager::gameLoop(Player &player, LevelManager &levelManager,
 //    dungeon.printDungeon();
     string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
     checkShouldQuitGame(playerAction, player, eventLogger);
-    player.move(playerAction, levelManager.dungeonNew);
+    player.move(playerAction, levelManager.dungeon);
 //    player.move(playerAction, dungeon);
 }
 
