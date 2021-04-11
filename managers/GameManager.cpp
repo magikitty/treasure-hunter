@@ -5,27 +5,22 @@
 
 using namespace std;
 
-GameManager::GameManager(EventLogger eventLogger, int levelNumber,
-                         LevelManager levelManager, Player player){
-    this->eventLogger = eventLogger;
-    this->levelCurrent = levelNumber;
-    this->levelManager = levelManager;
-    this->player = player;
+GameManager::GameManager() {
+    this->eventLogger = EventLogger();
+    this->levelCurrent = 1;
+    this->levelManager = LevelManager();
+    this->player = Player();
 }
 
 // TODO: write game instructions
 // Start game by instantiating necessary game elements
-void GameManager::startGame() {
+[[noreturn]] void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
-
 
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
-    // Infinite loop is terminated by checkShouldQuitGame()
-    while (true) {
-        gameLoop(player, levelManager, eventLogger);
-    }
+    gameLoop(player, levelManager, eventLogger);
 }
 
 // Print message and returns user input
@@ -37,14 +32,16 @@ string GameManager::getUserInput(string message) {
 }
 
 // Update the game each time player makes action
-void GameManager::gameLoop(Player &player, LevelManager &levelManager,
-                           EventLogger &eventLogger) {
-
-    printPlayerStats(player);
-    levelManager.selectAndPrintLevel(player, this->levelCurrent);
-    string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
-    checkShouldQuitGame(playerAction, player, eventLogger);
-    player.move(playerAction, levelManager.dungeon);
+[[noreturn]] void
+GameManager::gameLoop(Player &player, LevelManager &levelManager,
+                      EventLogger &eventLogger) {
+    while (true) {
+        printPlayerStats(player);
+        levelManager.selectAndPrintLevel(player, this->levelCurrent);
+        string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
+        checkShouldQuitGame(playerAction, player, eventLogger);
+        player.move(playerAction, levelManager.dungeon);
+    }
 }
 
 void GameManager::printPlayerStats(Player &player) const {
@@ -52,10 +49,9 @@ void GameManager::printPlayerStats(Player &player) const {
          player.getPoints() << " || Level: " << this->levelCurrent;
 }
 
-// TODO: add confirmation for quit
 // Call to quit game if user portals out or runs out of energy
-void GameManager::checkShouldQuitGame(string playerAction, Player player, EventLogger
-eventLogger) {
+void GameManager::checkShouldQuitGame(
+        string playerAction, Player player, EventLogger eventLogger) {
     if (playerAction == PORTAL_OUT) {
         cout << MESSAGE_PORTAL_OUT << endl;
         eventLogger.printEvents();
@@ -67,5 +63,6 @@ eventLogger) {
     }
 }
 
+// TODO: add confirmation for quit
 // Quit game
 void GameManager::quitGame() const { exit(0); }

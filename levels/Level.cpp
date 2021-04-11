@@ -8,8 +8,8 @@ Level::Level() {
     this->levelMaxNumber = MAX_LEVEL;
     this->mapHeight = 0;
     this->mapWidth = 0;
-    this->movementCost = 1;
     this->monsters = std::vector<Monster>();
+    this->movementCost = 1;
 }
 
 int Level::getLevelNumber() const {

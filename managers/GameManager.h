@@ -19,15 +19,16 @@ private:
     EventLogger eventLogger;
     Player player;
 public:
-    GameManager(EventLogger eventLogger, int levelNumber,
-                         LevelManager levelManager, Player player);
-    void gameLoop(Player &player, LevelManager &levelManager, EventLogger
+    GameManager();
+
+    [[noreturn]] void gameLoop(Player &player, LevelManager &levelManager, EventLogger
     &eventLogger);
     void printPlayerStats(Player &player) const;
     string getUserInput(string message);
     void checkShouldQuitGame(string playerAction, Player player, EventLogger
         eventLogger);
-    void startGame();
+
+    [[noreturn]] void startGame();
     void quitGame() const;
 };
 

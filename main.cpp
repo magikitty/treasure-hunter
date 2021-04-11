@@ -9,15 +9,7 @@
 using namespace std;
 
 int main() {
-    // Instantiate level manager
-    LevelManager levelManager;
-    // Instantiate event logger
-    EventLogger eventLogger;
-    // Instantiate player, set player name
-    Player player;
-    // Instantiate game manager
-    GameManager gameManager(eventLogger, 1, levelManager, player);
-
+    GameManager gameManager;
     gameManager.startGame();
 
     return 0;

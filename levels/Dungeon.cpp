@@ -16,7 +16,7 @@ Dungeon::Dungeon(int width, int height) {
     this->dungeonMap = makeDungeonMap();
 }
 
-char * Dungeon::makeDungeonMap() {
+char *Dungeon::makeDungeonMap() {
     dungeonMap = new char[height * width];
 
     // Generate pseudo random number
@@ -44,7 +44,7 @@ char * Dungeon::makeDungeonMap() {
     return dungeonMap;
 }
 
-Dungeon& Dungeon::operator=(const Dungeon &dungeon) {
+Dungeon &Dungeon::operator=(const Dungeon &dungeon) {
     this->width = dungeon.getWidth();
     this->height = dungeon.getHeight();
     this->dungeonMap = new char[width * height];
@@ -85,7 +85,6 @@ void Dungeon::setHeight(int height) {
 
 void Dungeon::printDungeon() {
     int mapSize = this->height * this->width;
-
     std::cout << std::endl;
 
     for (int i = 0; i < mapSize; i++) {
