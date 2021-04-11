@@ -16,7 +16,7 @@ private:
     int levelNumber, levelMaxNumber;
     std::vector<Monster> monsters;
 public:
-    explicit Level(int levelNum);
+    Level();
     int getMovementCost() const;
     void setLevelNumber(int number);
     int getLevelNumber() const;

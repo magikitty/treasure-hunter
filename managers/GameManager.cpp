@@ -5,8 +5,12 @@
 
 using namespace std;
 
-GameManager::GameManager(int levelNumber) {
+GameManager::GameManager(EventLogger eventLogger, int levelNumber,
+                         LevelManager levelManager, Player player){
+    this->eventLogger = eventLogger;
     this->levelCurrent = levelNumber;
+    this->levelManager = levelManager;
+    this->player = player;
 }
 
 // TODO: write game instructions
@@ -14,23 +18,13 @@ GameManager::GameManager(int levelNumber) {
 void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
 
-    // Instantiate player, set player name
-    Player player;
+
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
-    // Instantiate level manager
-    LevelManager levelManager(1);
-
-    // Instantiate event logger
-    EventLogger eventLogger;
-
-    // Load level with dungeon
-    Dungeon dungeon = levelManager.loadLevel(player);
-
     // Infinite loop is terminated by checkShouldQuitGame()
     while (true) {
-        gameLoop(player, dungeon, eventLogger);
+        gameLoop(player, levelManager, eventLogger);
     }
 }
 
@@ -43,15 +37,23 @@ string GameManager::getUserInput(string message) {
 }
 
 // Update the game each time player makes action
-void GameManager::gameLoop(Player &player, Dungeon &dungeon,
+void GameManager::gameLoop(Player &player, LevelManager &levelManager,
                            EventLogger &eventLogger) {
-    cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
-         player.getPoints() << " || Level: " << this->levelCurrent;
 
-    dungeon.printDungeon();
+    levelManager.selectAndPrintLevel(player, this->levelCurrent);
+//    Dungeon dungeon = levelManager.loadLevel(player, this->levelCurrent);
+
+    printPlayerStats(player);
+//    dungeon.printDungeon();
     string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
     checkShouldQuitGame(playerAction, player, eventLogger);
-    player.move(playerAction, dungeon);
+    player.move(playerAction, levelManager.dungeonNew);
+//    player.move(playerAction, dungeon);
+}
+
+void GameManager::printPlayerStats(Player &player) const {
+    cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
+         player.getPoints() << " || Level: " << this->levelCurrent;
 }
 
 // TODO: add confirmation for quit

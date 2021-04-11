@@ -15,11 +15,18 @@
 class GameManager {
 private:
     int levelCurrent;
+    LevelManager levelManager;
+    EventLogger eventLogger;
+    Player player;
 public:
-    explicit GameManager(int levelNumber);
-    void gameLoop(Player &player, Dungeon &dungeon, EventLogger &eventLogger);
+    GameManager(EventLogger eventLogger, int levelNumber,
+                         LevelManager levelManager, Player player);
+    void gameLoop(Player &player, LevelManager &levelManager, EventLogger
+    &eventLogger);
+    void printPlayerStats(Player &player) const;
     string getUserInput(string message);
-    void checkShouldQuitGame(string playerAction, Player player, EventLogger eventLogger);
+    void checkShouldQuitGame(string playerAction, Player player, EventLogger
+        eventLogger);
     void startGame();
     void quitGame() const;
 };

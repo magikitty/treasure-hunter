@@ -3,9 +3,13 @@
 
 #include "Level.h"
 
-Level::Level(int levelNum) {
-    this->levelNumber = levelNum;
+Level::Level() {
+    this->levelNumber = 0;
     this->levelMaxNumber = MAX_LEVEL;
+    this->mapHeight = 0;
+    this->mapWidth = 0;
+    this->movementCost = 1;
+    this->monsters = std::vector<Monster>();
 }
 
 int Level::getLevelNumber() const {
