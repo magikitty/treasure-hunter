@@ -75,6 +75,23 @@ int Map::getHeight() const {
     return this->height;
 }
 
+// Returns random position on map that contains floor symbol
+Position Map::getRandomPosition() {
+    Position randomPosition(0, 0);
+    // Generate pseudo random number
+    srand(time(NULL));
+    int maxWidth = (this->width - 1);
+    int maxHeight = (this->height - 1);
+
+    // Get new position until character at position is floor symbol
+    while(getCharAtPosition(randomPosition) != getSymbolFloor()) {
+        int randomWidth = rand() % maxWidth;
+        int randomHeight = rand() % maxHeight;
+        randomPosition = Position(randomWidth, randomHeight);
+    }
+    return randomPosition;
+}
+
 void Map::setWidth(int width) {
     this->width = width;
 }

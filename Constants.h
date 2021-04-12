@@ -34,10 +34,18 @@ const string MOVE_RIGHT = "d";
 const string PORTAL_OUT = "p";
 
 /*****************************************************************************/
+/* Character symbols */
+/*****************************************************************************/
+
+const char SYMBOL_ENTRANCE = 'E';
+const char SYMBOL_FLOOR = '.';
+const char SYMBOL_PLAYER = '@';
+const char SYMBOL_WALL = '#';
+
+/*****************************************************************************/
 /* Game object constants */
 /*****************************************************************************/
 
-const char SYMBOL_PLAYER = '@';
 const int PLAYER_ENERGY_START = 100;
 const string PLAYER_NAME_DEFAULT = "Treasure Hunter";
 const int PLAYER_POINTS_START = 0;
