@@ -41,6 +41,11 @@ GameManager::gameLoop(Player &player, LevelManager &levelManager,
         string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
         checkShouldQuitGame(playerAction, player, eventLogger);
         player.move(playerAction, levelManager.map);
+
+        if (player.getIsAtEntrance()) {
+            this->levelCurrent++;
+            player.setIsAtEntrance(false);
+        }
     }
 }
 

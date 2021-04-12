@@ -16,11 +16,15 @@ std::string Player::getName() const {
     return this->name;
 }
 
-int Player::getEnergy() {
+int Player::getEnergy() const {
     return this->energy;
 }
 
-int Player::getPoints() {
+bool Player::getIsAtEntrance() const {
+    return this->isAtEntrance;
+}
+
+int Player::getPoints() const {
     return this->points;
 }
 
@@ -30,6 +34,10 @@ void Player::setName(std::string namePlayer) {
 
 void Player::setEnergy(int energy) {
     this->energy = energy;
+}
+
+void Player::setIsAtEntrance(bool playerIsAtEntrance) {
+    this->isAtEntrance = playerIsAtEntrance;
 }
 
 void Player::setPoints(int points) {
@@ -63,10 +71,21 @@ void Player::move(std::string action, Map &map) {
 
     // Check that player does not walk over wall
     if (map.getCharAtPosition(newPosition) != map.getSymbolWall()) {
+        if (map.getCharAtPosition(newPosition) != map.getSymbolFloor()) {
+            selectInteraction(map.getCharAtPosition(newPosition));
+        }
         this->setPosition(newPosition);
         map.setCharAtPosition(this->getSymbol(), this->getPosition());
         map.setCharAtPosition(map.getSymbolFloor(), oldPosition);
     } else {
         cout << "You can't walk through walls!" << endl; // debugging
+    }
+}
+
+void Player::selectInteraction(char symbol) {
+    if (symbol == SYMBOL_ENTRANCE) {
+        this->isAtEntrance = true;
+    } else if (symbol == SYMBOL_MONSTER) {
+        cout << "You encountered a monster" << endl; // debugging
     }
 }

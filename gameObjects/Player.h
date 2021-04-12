@@ -14,16 +14,20 @@ private:
     int energy;
     int points;
     std::string name;
+    bool isAtEntrance = false;
+
 public:
     Player();
     std::string getName() const;
-    int getEnergy();
-    int getPoints();
+    int getEnergy() const;
+    int getPoints() const;
+    bool getIsAtEntrance() const;
     void setName(std::string namePlayer);
     void setEnergy(int energy);
     void setPoints(int points);
+    void setIsAtEntrance(bool playerIsAtEntrance);
     void move(std::string action, Map &map);
-    void interact(GameObject gameObject);
+    void selectInteraction(char symbol);
 };
 
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "managers/GameManager.h"
+#include "levels/Map.h"
 
 using namespace std;
 

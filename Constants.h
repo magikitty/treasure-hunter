@@ -39,6 +39,9 @@ const string PORTAL_OUT = "p";
 
 const char SYMBOL_ENTRANCE = 'E';
 const char SYMBOL_FLOOR = '.';
+const char SYMBOL_GEM = 'G';
+const char SYMBOL_MAGIC_APPLE = 'A';
+const char SYMBOL_MONSTER = 'M';
 const char SYMBOL_PLAYER = '@';
 const char SYMBOL_WALL = '#';
 

@@ -34,5 +34,8 @@ void LevelManager::makeNewMap(Player &player) {
             this->level.getMonsters()[0].getPosition().getX(),
             this->level.getMonsters()[0].getPosition().getY());
 
+    // TODO: modify after gems implemented (TESTING ENTRANCE)
+    mapNew.addEntrance();
+
     this->map = mapNew;
 }

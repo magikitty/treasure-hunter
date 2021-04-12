@@ -26,6 +26,7 @@ public:
     char getCharAtPosition(Position position) const;
     int getIndexAtPosition(int x, int y) const;
     Position getRandomPosition();
+    char getSymbolEntrance() const;
     char getSymbolWall() const;
     char getSymbolFloor() const;
     int getWidth() const;

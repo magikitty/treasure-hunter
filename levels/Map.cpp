@@ -64,6 +64,10 @@ Map::~Map() {
     delete[] this->charMap;
 }
 
+char Map::getSymbolEntrance() const {
+    return this->symbolEntrance;
+}
+
 char Map::getSymbolFloor() const {
     return this->symbolFloor;
 }
