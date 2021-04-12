@@ -11,7 +11,7 @@ add_executable(treasure-hunter main.cpp
         gameObjects/MagicApple.cpp gameObjects/MagicApple.h
         helperClasses/Position.cpp helperClasses/Position.h
         helperClasses/EventLogger.cpp helperClasses/EventLogger.h
-        levels/Dungeon.cpp levels/Dungeon.h
+        levels/Map.cpp levels/Map.h
         levels/Level.cpp levels/Level.h
         managers/GameManager.cpp managers/GameManager.h
         managers/LevelManager.cpp managers/LevelManager.h

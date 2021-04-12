@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "GameObject.h"
-#include "../levels/Dungeon.h"
+#include "../levels/Map.h"
 
 #ifndef TREASURE_HUNTER_PLAYER_H
 #define TREASURE_HUNTER_PLAYER_H
@@ -22,7 +22,7 @@ public:
     void setName(std::string namePlayer);
     void setEnergy(int energy);
     void setPoints(int points);
-    void move(std::string action, Dungeon &dungeon);
+    void move(std::string action, Map &map);
     void interact(GameObject gameObject);
 };
 

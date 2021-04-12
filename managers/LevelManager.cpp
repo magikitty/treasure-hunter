@@ -14,25 +14,25 @@ void LevelManager::setLevel(int levelNumber) {
 // Load new level or print current level
 void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
     if (levelCurrent > this->getLevel()) {
-        newDungeon(player);
+        makeNewMap(player);
         this->setLevel(getLevel() + 1);
     }
-    this->dungeon.printDungeon();
+    this->map.printMap();
 }
 
-// Create new dungeon, add player and monster
-void LevelManager::newDungeon(Player &player) {
-    Dungeon dungeonNew(12, 8);
+// Create new map, add player and monster
+void LevelManager::makeNewMap(Player &player) {
+    Map mapNew(12, 8);
 
-    dungeonNew.setCharAtPosition(player.getSymbol(),
-                                 player.getPosition().getX(),
-                                 player.getPosition().getY());
+    mapNew.setCharAtPosition(player.getSymbol(),
+                             player.getPosition().getX(),
+                             player.getPosition().getY());
 
     this->level.addMonster(Monster('M', 50, 3, 5));
-    dungeonNew.setCharAtPosition(
+    mapNew.setCharAtPosition(
             this->level.getMonsters()[0].getSymbol(),
             this->level.getMonsters()[0].getPosition().getX(),
             this->level.getMonsters()[0].getPosition().getY());
 
-    this->dungeon = dungeonNew;
+    this->map = mapNew;
 }

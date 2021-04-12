@@ -40,7 +40,7 @@ GameManager::gameLoop(Player &player, LevelManager &levelManager,
         levelManager.selectAndPrintLevel(player, this->levelCurrent);
         string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
         checkShouldQuitGame(playerAction, player, eventLogger);
-        player.move(playerAction, levelManager.dungeon);
+        player.move(playerAction, levelManager.map);
     }
 }
 

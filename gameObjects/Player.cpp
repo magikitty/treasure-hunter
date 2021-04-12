@@ -36,13 +36,12 @@ void Player::setPoints(int points) {
     this->points = points;
 }
 
-// Dummy function for determining how player moves
-void Player::move(std::string action, Dungeon &dungeon) {
+// Move player char to new map tile
+void Player::move(std::string action, Map &map) {
     int xPosition = this->getPosition().getX();
     int yPosition = this->getPosition().getY();
     Position oldPosition(xPosition, yPosition);
     Position newPosition;
-    int currentPositionIndex = dungeon.getIndexAtPosition(xPosition, yPosition);
 
     if (action == MOVE_UP) {
         std::cout << "You move up!" << std::endl; // debugging
@@ -57,16 +56,16 @@ void Player::move(std::string action, Dungeon &dungeon) {
         newPosition = Position((xPosition + 1), yPosition);
         std::cout << "You move right!" << std::endl; // debugging
     } else if (action == PORTAL_OUT) {
-        std::cout << "You portal out of the dungeon!" << std::endl; // debugging
+        std::cout << "You portal out of the map!" << std::endl; // debugging
     } else {
         std::cout << "Invalid action" << std::endl; // debugging
     }
 
     // Check that player does not walk over wall
-    if (dungeon.getCharAtPosition(newPosition) != dungeon.getSymbolWall()) {
+    if (map.getCharAtPosition(newPosition) != map.getSymbolWall()) {
         this->setPosition(newPosition);
-        dungeon.setCharAtPosition(this->getSymbol(), this->getPosition());
-        dungeon.setCharAtPosition(dungeon.getSymbolFloor(), oldPosition);
+        map.setCharAtPosition(this->getSymbol(), this->getPosition());
+        map.setCharAtPosition(map.getSymbolFloor(), oldPosition);
     } else {
         cout << "You can't walk through walls!" << endl; // debugging
     }
