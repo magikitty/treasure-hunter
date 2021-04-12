@@ -44,6 +44,11 @@ char *Map::makeCharMap() {
     return charMap;
 }
 
+void Map::addEntrance() {
+    Position entrancePosition = getRandomPosition();
+    setCharAtPosition(this->symbolEntrance, entrancePosition);
+}
+
 Map &Map::operator=(const Map &map) {
     this->width = map.getWidth();
     this->height = map.getHeight();

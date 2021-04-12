@@ -20,6 +20,7 @@ public:
     Map(int width, int height);
     ~Map();
     char* makeCharMap();
+    void addEntrance();
     Map& operator= (const Map &map); // operator overload
     char getCharAtPosition(int x, int y) const;
     char getCharAtPosition(Position position) const;
