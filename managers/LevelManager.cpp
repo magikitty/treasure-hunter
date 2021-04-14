@@ -22,20 +22,46 @@ void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
 
 // Create new map, add player and monster
 void LevelManager::makeNewMap(Player &player) {
-    Map mapNew(12, 8);
+    Map mapNew(10, 8);
 
     mapNew.setCharAtPosition(player.getSymbol(),
                              player.getPosition().getX(),
                              player.getPosition().getY());
 
-    this->level.addMonster(Monster('M', 50, 3, 5));
-    mapNew.setCharAtPosition(
-            this->level.getMonsters()[0].getSymbol(),
-            this->level.getMonsters()[0].getPosition().getX(),
-            this->level.getMonsters()[0].getPosition().getY());
+    // Add monsters to vector and place characters on map
+    this->level.addMonstersToVector(Monster(50), this->getNumberOfObjectsToAdd
+    (mapNew));
+    addObjectsToMap(this->level.getMonsters(), mapNew);
+    // Add gems to vector and place characters on map
+    this->level.addGemsToVector(Gem(50), this->getNumberOfObjectsToAdd(mapNew));
+    addObjectsToMap(this->level.getGems(), mapNew);
 
     // TODO: modify after gems implemented (TESTING ENTRANCE)
     mapNew.addEntrance();
 
     this->map = mapNew;
+}
+
+// Add object characters to map at random position
+void LevelManager::addObjectsToMap(vector<GameObject> objects, Map &map) {
+    for (int i = 0; i < objects.size(); i++) {
+        map.setCharAtPosition(objects[i].getSymbol(), map.getRandomPosition());
+    }
+}
+
+// Return number of game objects that should be added to the level map
+int LevelManager::getNumberOfObjectsToAdd(Map &map) {
+    int numToAdd = (map.getWidth() * map.getHeight()) / 50;
+    int numExtraToAdd;
+
+    if (this->level.getLevelNumber() < 5) {
+        numExtraToAdd = 1;
+    } else if (this->level.getLevelNumber() < 10) {
+        numExtraToAdd = 2;
+    } else {
+        numExtraToAdd = 3;
+    }
+
+    int numToAddTotal = (numToAdd + numExtraToAdd);
+    return numToAddTotal;
 }

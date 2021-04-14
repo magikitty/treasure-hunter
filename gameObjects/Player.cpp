@@ -87,5 +87,7 @@ void Player::selectInteraction(char symbol) {
         this->isAtEntrance = true;
     } else if (symbol == SYMBOL_MONSTER) {
         cout << "You encountered a monster" << endl; // debugging
+    } else if (symbol == SYMBOL_GEM) {
+        cout << "You found a gem" << endl; // debugging
     }
 }
