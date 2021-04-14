@@ -2,6 +2,7 @@
 // Programming Languages 2
 
 #include "GameObject.h"
+#include "../Constants.h"
 
 #ifndef TREASURE_HUNTER_MONSTER_H
 #define TREASURE_HUNTER_MONSTER_H

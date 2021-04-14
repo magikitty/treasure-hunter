@@ -2,6 +2,7 @@
 // Programming Languages 2
 
 #include "GameObject.h"
+#include "../Constants.h"
 
 #ifndef TREASURE_HUNTER_GEM_H
 #define TREASURE_HUNTER_GEM_H
@@ -11,7 +12,7 @@ class Gem : public GameObject {
 private:
     int value;
 public:
-    Gem(int value);
+    explicit Gem(int value);
     Gem(char symbol, int value);
     int getValue() const;
     void setValue(int value);

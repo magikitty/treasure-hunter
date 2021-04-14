@@ -5,6 +5,7 @@
 
 Gem::Gem(int value) {
     this->value = value;
+    this->symbol = SYMBOL_GEM;
 }
 
 Gem::Gem(char symbol, int value) : GameObject(symbol) {

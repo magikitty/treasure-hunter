@@ -6,6 +6,7 @@
 
 Monster::Monster(int strength) {
     this->strength = strength;
+    this->symbol = SYMBOL_MONSTER;
 }
 
 Monster::Monster(char symbol, int strength, int x, int y) : GameObject(symbol, x, y) {
