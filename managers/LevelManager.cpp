@@ -28,8 +28,11 @@ void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
 void LevelManager::makeNewMap(Player &player) {
     this->entranceIsAdded = false;
     player.setFoundEntrance(false);
+    this->level.setMapWidth(this->level.getMapWidth()+1);
+    this->level.setMapHeight(this->level.getMapHeight()+1);
+
     // Create new map
-    Map mapNew(10, 8);
+    Map mapNew(this->level.getMapWidth(), this->level.getMapHeight());
 
     // Add player symbol to map
     mapNew.setCharAtPosition(player.getSymbol(),

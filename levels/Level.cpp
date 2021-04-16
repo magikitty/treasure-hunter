@@ -6,8 +6,8 @@
 Level::Level() {
     this->levelNumber = 0;
     this->levelMaxNumber = MAX_LEVEL;
-    this->mapHeight = 0;
-    this->mapWidth = 0;
+//    this->mapHeight = 7;
+//    this->mapWidth = 9;
     this->movementCost = 1;
 }
 
@@ -19,8 +19,24 @@ void Level::setLevelNumber(int number) {
     this->levelNumber = number;
 }
 
+int Level::getMapHeight() const {
+    return this->mapHeight;
+}
+
+int Level::getMapWidth() const {
+    return this->mapWidth;
+}
+
 int Level::getMovementCost() const {
     return this->movementCost;
+}
+
+void Level::setMapHeight(int height) {
+    this->mapHeight = height;
+}
+
+void Level::setMapWidth(int width) {
+    this->mapWidth = width;
 }
 
 // Set movement cost to equal current level number
