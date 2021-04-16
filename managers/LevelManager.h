@@ -12,6 +12,7 @@
 class LevelManager {
 private:
     Level level;
+    bool entranceIsAdded = false;
 public:
     Map map; // TODO refactor with getter-setter
     int getLevel() const;

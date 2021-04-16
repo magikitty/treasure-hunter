@@ -20,6 +20,10 @@ int Player::getEnergy() const {
     return this->energy;
 }
 
+bool Player::getFoundEntrance() const {
+    return this->foundEntrance;
+}
+
 bool Player::getIsAtEntrance() const {
     return this->isAtEntrance;
 }
@@ -34,6 +38,10 @@ void Player::setName(std::string namePlayer) {
 
 void Player::setEnergy(int energy) {
     this->energy = energy;
+}
+
+void Player::setFoundEntrance(bool foundEntrance) {
+    this->foundEntrance = foundEntrance;
 }
 
 void Player::setIsAtEntrance(bool playerIsAtEntrance) {
@@ -89,5 +97,6 @@ void Player::selectInteraction(char symbol) {
         cout << "You encountered a monster" << endl; // debugging
     } else if (symbol == SYMBOL_GEM) {
         cout << "You found a gem" << endl; // debugging
+        this->foundEntrance = true;
     }
 }

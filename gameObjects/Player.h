@@ -15,15 +15,17 @@ private:
     int points;
     std::string name;
     bool isAtEntrance = false;
-
+    bool foundEntrance = false;
 public:
     Player();
     std::string getName() const;
     int getEnergy() const;
+    bool getFoundEntrance() const;
     int getPoints() const;
     bool getIsAtEntrance() const;
     void setName(std::string namePlayer);
     void setEnergy(int energy);
+    void setFoundEntrance(bool foundEntrance);
     void setPoints(int points);
     void setIsAtEntrance(bool playerIsAtEntrance);
     void move(std::string action, Map &map);

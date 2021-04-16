@@ -16,14 +16,22 @@ void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
     if (levelCurrent > this->getLevel()) {
         makeNewMap(player);
         this->setLevel(getLevel() + 1);
+    } else if (player.getFoundEntrance() == true && this->entranceIsAdded ==
+    false) {
+        this->map.addEntrance();
+        this->entranceIsAdded = true;
     }
     this->map.printMap();
 }
 
 // Create new map, add player and monster
 void LevelManager::makeNewMap(Player &player) {
+    this->entranceIsAdded = false;
+    player.setFoundEntrance(false);
+    // Create new map
     Map mapNew(10, 8);
 
+    // Add player symbol to map
     mapNew.setCharAtPosition(player.getSymbol(),
                              player.getPosition().getX(),
                              player.getPosition().getY());
@@ -32,12 +40,10 @@ void LevelManager::makeNewMap(Player &player) {
     this->level.addMonstersToVector(Monster(50), this->getNumberOfObjectsToAdd
     (mapNew));
     addObjectsToMap(this->level.getMonsters(), mapNew);
+
     // Add gems to vector and place characters on map
     this->level.addGemsToVector(Gem(50), this->getNumberOfObjectsToAdd(mapNew));
     addObjectsToMap(this->level.getGems(), mapNew);
-
-    // TODO: modify after gems implemented (TESTING ENTRANCE)
-    mapNew.addEntrance();
 
     this->map = mapNew;
 }
