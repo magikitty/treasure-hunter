@@ -20,7 +20,7 @@ public:
     void setLevel(int levelNumber);
     void selectAndPrintLevel(Player &player, int levelCurrent);
     int getNumberOfObjectsToAdd(Map &map);
-    void addObjectsToMap(std::vector<GameObject> objects, Map &map);
+    void addGameObjectsToMap(std::vector<GameObject> objects, Map &map);
 };
 
 

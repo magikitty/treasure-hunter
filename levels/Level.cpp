@@ -5,9 +5,7 @@
 
 Level::Level() {
     this->levelNumber = 0;
-    this->levelMaxNumber = MAX_LEVEL;
-//    this->mapHeight = 7;
-//    this->mapWidth = 9;
+    this->levelMaxNumber = LEVEL_MAX;
     this->movementCost = 1;
 }
 
@@ -39,7 +37,7 @@ void Level::setMapWidth(int width) {
     this->mapWidth = width;
 }
 
-// Set movement cost to equal current level number
+// Movement cost to equal current level number
 void Level::setMovementCost() {
     this->movementCost = this->getLevelNumber();
 }
@@ -48,6 +46,7 @@ std::vector<GameObject> Level::getMonsters() {
     return this->monsters;
 }
 
+// Add specified number of monster objects to monsters vector
 void Level::addMonstersToVector(Monster monster, int numToAdd) {
     for (int i = 0; i < numToAdd; i++) {
         this->monsters.push_back(monster);

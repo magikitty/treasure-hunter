@@ -13,24 +13,24 @@ using namespace std;
 /* Messages */
 /*****************************************************************************/
 
+const string MESSAGE_ENTER_NAME = "Enter your name: ";
+const string MESSAGE_GAME_HISTORY = "Here is a history of your game:";
 const string MESSAGE_PLAYER_ACTION = "Enter action (wasd to move, p to portal"
                                      " out): ";
-const string MESSAGE_WELCOME = "Welcome to Treasure Hunter!";
-const string MESSAGE_ENTER_NAME = "Enter your name: ";
-const string MESSAGE_PORTAL_OUT = "You portal out of the dungeon and so ends "
-                                  "your treasure hunt. Game over.";
 const string MESSAGE_PLAYER_DEAD = "You have run out of energy and perished "
                                    "in the dungeon. Game over.";
-const string MESSAGE_GAME_HISTORY = "Here is a history of your game:";
+const string MESSAGE_PORTAL_OUT = "You portal out of the dungeon and so ends "
+                                  "your treasure hunt. Game over.";
+const string MESSAGE_WELCOME = "Welcome to Treasure Hunter!";
 
 /*****************************************************************************/
 /* Movement & player commands */
 /*****************************************************************************/
 
-const string MOVE_UP = "w";
-const string MOVE_LEFT = "a";
 const string MOVE_DOWN = "s";
+const string MOVE_LEFT = "a";
 const string MOVE_RIGHT = "d";
+const string MOVE_UP = "w";
 const string PORTAL_OUT = "p";
 
 /*****************************************************************************/
@@ -57,6 +57,6 @@ const int PLAYER_POINTS_START = 0;
 /* Level constants */
 /*****************************************************************************/
 
-const int MAX_LEVEL = 15;
+const int LEVEL_MAX = 15;
 
 #endif //TREASURE_HUNTER_CONSTANTS_H

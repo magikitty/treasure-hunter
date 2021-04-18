@@ -21,7 +21,7 @@ public:
     ~Map();
     char* makeCharMap();
     void addEntrance();
-    Map& operator= (const Map &map); // operator overload
+    Map& operator= (const Map &map);
     char getCharAtPosition(int x, int y) const;
     char getCharAtPosition(Position position) const;
     int getIndexAtPosition(int x, int y) const;

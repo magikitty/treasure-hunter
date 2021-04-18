@@ -60,21 +60,16 @@ void Player::move(std::string action, Map &map) {
     Position newPosition;
 
     if (action == MOVE_UP) {
-        std::cout << "You move up!" << std::endl; // debugging
         newPosition = Position(xPosition, (yPosition - 1));
     } else if (action == MOVE_LEFT) {
-        std::cout << "You move left!" << std::endl;  // debugging
         newPosition = Position((xPosition - 1), yPosition);
     } else if (action == MOVE_DOWN) {
         newPosition = Position(xPosition, (yPosition + 1));
-        std::cout << "You move down!" << std::endl; // debugging
     } else if (action == MOVE_RIGHT) {
         newPosition = Position((xPosition + 1), yPosition);
-        std::cout << "You move right!" << std::endl; // debugging
     } else if (action == PORTAL_OUT) {
-        std::cout << "You portal out of the map!" << std::endl; // debugging
     } else {
-        std::cout << "Invalid action" << std::endl; // debugging
+        std::cout << "Invalid action" << std::endl;
     }
 
     // Check that player does not walk over wall
@@ -86,7 +81,7 @@ void Player::move(std::string action, Map &map) {
         map.setCharAtPosition(this->getSymbol(), this->getPosition());
         map.setCharAtPosition(map.getSymbolFloor(), oldPosition);
     } else {
-        cout << "You can't walk through walls!" << endl; // debugging
+        cout << "You can't walk through walls!" << endl;
     }
 }
 
@@ -94,9 +89,9 @@ void Player::selectInteraction(char symbol) {
     if (symbol == SYMBOL_ENTRANCE) {
         this->isAtEntrance = true;
     } else if (symbol == SYMBOL_MONSTER) {
-        cout << "You encountered a monster" << endl; // debugging
+        cout << "You encountered a monster" << endl; // TODO: implement fight
     } else if (symbol == SYMBOL_GEM) {
-        cout << "You found a gem" << endl; // debugging
+        cout << "You found a gem" << endl; // TODO: implement points
         this->foundEntrance = true;
     }
 }

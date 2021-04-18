@@ -26,7 +26,7 @@ public:
     int getLevelNumber() const;
     void setMapWidth(int width);
     void setMapHeight(int height);
-    void setMovementCost(); // movement cost determined by level
+    void setMovementCost();
     void addMonstersToVector(Monster monster, int numToAdd);
     std::vector<GameObject> getMonsters();
     void addGemsToVector(Gem gem, int numToAdd);

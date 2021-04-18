@@ -21,12 +21,10 @@ private:
 public:
     GameManager();
 
-    [[noreturn]] void gameLoop(Player &player, LevelManager &levelManager, EventLogger
-    &eventLogger);
-    void printPlayerStats(Player &player) const;
+    [[noreturn]] void gameLoop();
+    void printPlayerStats() const;
     string getUserInput(string message);
-    void checkShouldQuitGame(string playerAction, Player player, EventLogger
-        eventLogger);
+    void checkShouldQuitGame(string playerAction);
 
     [[noreturn]] void startGame();
     void quitGame() const;

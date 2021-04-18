@@ -84,7 +84,7 @@ int Map::getHeight() const {
     return this->height;
 }
 
-// Returns random position on map that contains floor symbol
+// Return random position on map that contains floor symbol
 Position Map::getRandomPosition() {
     Position randomPosition(0, 0);
     // Generate pseudo random number

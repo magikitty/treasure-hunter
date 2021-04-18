@@ -13,17 +13,17 @@ GameManager::GameManager() {
 }
 
 // TODO: write game instructions
-// Start game by instantiating necessary game elements
+// Instantiate necessary game elements
 [[noreturn]] void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
 
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
 
-    gameLoop(player, levelManager, eventLogger);
+    gameLoop();
 }
 
-// Print message and returns user input
+// Print message to player and return user input
 string GameManager::getUserInput(string message) {
     string userInput;
     cout << message;
@@ -31,37 +31,35 @@ string GameManager::getUserInput(string message) {
     return userInput;
 }
 
-// Update the game each time player makes action
+// Update the game each time player performs action
 [[noreturn]] void
-GameManager::gameLoop(Player &player, LevelManager &levelManager,
-                      EventLogger &eventLogger) {
+GameManager::gameLoop() {
     while (true) {
-        printPlayerStats(player);
-        levelManager.selectAndPrintLevel(player, this->levelCurrent);
+        printPlayerStats();
+        this->levelManager.selectAndPrintLevel(this->player, this->levelCurrent);
         string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
-        checkShouldQuitGame(playerAction, player, eventLogger);
-        player.move(playerAction, levelManager.map);
+        checkShouldQuitGame(playerAction);
+        this->player.move(playerAction, this->levelManager.map);
 
-        if (player.getIsAtEntrance()) {
+        if (this->player.getIsAtEntrance()) {
             this->levelCurrent++;
-            player.setIsAtEntrance(false);
+            this->player.setIsAtEntrance(false);
         }
     }
 }
 
-void GameManager::printPlayerStats(Player &player) const {
-    cout << endl << "|| Energy: " << player.getEnergy() << " || Points: " <<
-         player.getPoints() << " || Level: " << this->levelCurrent;
+void GameManager::printPlayerStats() const {
+    cout << endl << "|| Energy: " << this->player.getEnergy() << " || Points: " <<
+         this->player.getPoints() << " || Level: " << this->levelCurrent;
 }
 
-// Call to quit game if user portals out or runs out of energy
-void GameManager::checkShouldQuitGame(
-        string playerAction, Player player, EventLogger eventLogger) {
+// Quit game if user portals out or runs out of energy
+void GameManager::checkShouldQuitGame(string playerAction) {
     if (playerAction == PORTAL_OUT) {
         cout << MESSAGE_PORTAL_OUT << endl;
-        eventLogger.printEvents();
+        this->eventLogger.printEvents();
         quitGame();
-    } else if (player.getEnergy() == 0) {
+    } else if (this->player.getEnergy() == 0) {
         cout << MESSAGE_PLAYER_DEAD << endl;
         eventLogger.printEvents();
         quitGame();
