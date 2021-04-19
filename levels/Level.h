@@ -17,6 +17,7 @@ private:
     int levelNumber, levelMaxNumber;
     std::vector<GameObject> gems;
     std::vector<GameObject> monsters;
+    std::vector<GameObject> magicApples;
 public:
     Level();
     int getMapWidth() const;

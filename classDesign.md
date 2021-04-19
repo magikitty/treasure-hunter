@@ -28,7 +28,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
 - Description: The Gem class contains the symbol and value of gems. The player can pick up gems in the map and gains 
   points equal to the value of the gem.
   
-## MagicApple
+### MagicApple
 
 - Member variables: int energyRestored
 - Member functions:
@@ -37,7 +37,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
 - Description: The MagicApple class contains the symbol and value for how much energy magic apples restore. The player 
   can pick up magic apples in the map and gains energy equal to the value energy restored by the magic apple.
   
-## Monster
+### Monster
 
 - Member variables: int strength
 - Member functions:
@@ -47,7 +47,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
   can move onto a monster's tile and the fight the monster. The player will lose energy equal to the monster's 
   strength, but if the player still has energy left after the fight they will also gain points.
   
-## Player
+### Player
 - Member variables:
   - int energy;
   - int points;
@@ -79,7 +79,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
   game, e.g. if the player wins a monster fight or finds a new level. The EventLogger object will print out all the 
   event descriptions at the end of the game.
   
-## Position
+### Position
 
 - Member variables: int xCoordinate, int yCoordinate
 - Member functions:
@@ -88,3 +88,70 @@ Below is a list of classes used in the game. Each heading is the name of a class
 - Description: the Position class is responsible for creating position objects that represent a two-dimensional 
   coordinate on the game map. Game objects have positions, so the Position class is used by GameObjects to determine 
   their position and by the Map class to place objects at certain locations on the map.
+
+******** levels ********
+
+### Level
+
+- Member variables:
+  - int mapWidth = 11, mapHeight = 7;
+  - int movementCost;
+  - int levelNumber, levelMaxNumber;
+  - std::vector<GameObject> gems;
+  - std::vector<GameObject> monsters;
+  - std::vector<GameObject> magicApples;
+- Member functions
+  - `Level()` default constructor
+  - Getters and setters for member variables
+  - `void setMovementCost()` does not have any parameters because it sets the movement cost to equal the number of 
+    the current level
+  - Functions for adding a given number of monsters or gems to the appropriate vector. E.g. `void addGemsToVector
+    (Gem gem, int numToAdd)` adds the specified number of Gem objects to the gems vector.
+- Description: The Level class represents a single level in the game. This class is responsible for setting movement 
+  costs, the level's map size and controls the gems, monsters and magic apples for the current level. The Level 
+  class is mainly used by the LevelManager to create new levels.
+  
+### Map
+
+- Member variables:
+  - char symbolWall = SYMBOL_WALL;
+  - char symbolFloor = SYMBOL_FLOOR;
+  - char symbolEntrance = SYMBOL_ENTRANCE;
+  - int width, height;
+  - char *charMap;
+- Member functions:
+  - Constructors and destructor for Map objects
+  - Getters and setters for member variables
+  - `char* makeCharMap()` creates the map by creating a dynamically allocated array that is filled with characters 
+    representing wall and floor tiles
+  - `char getCharAtPosition(Position position) const` returns index position corresponding to parameter position
+  - `int getIndexAtPosition(int x, int y) const` returns index position corresponding to parameter coordinates
+  - void addEntrance();
+  - Map& operator= (const Map &map);
+  - char getCharAtPosition(int x, int y) const;
+  - Position getRandomPosition();
+  - void printMap()
+- Description: the Map class is responsible for creating Map objects that create and print the visible map for each 
+  level. The Map class is used mainly by the LevelManager to create new maps for new levels or print current levels. 
+  The Player class also uses the map to move the Player symbol according to user input.
+
+******** managers ********
+
+### GameManager
+
+- Member variables:
+  - int levelCurrent;
+  - LevelManager levelManager;
+  - EventLogger eventLogger;
+  - Player player;
+- Member functions:
+  - GameManager();
+  - void gameLoop();
+  - void printPlayerStats() const;
+  - string getUserInput(string message);
+  - void checkShouldQuitGame(string playerAction);
+  - void startGame();
+  - void quitGame() const;
+- Description: The GameManager manages the game by instantiating other objects and calling necessary functions to 
+  make the game run. The GameManager starts and quits the game. The GameManager works mainly with the LevelManager, 
+  EventLogger and Player classes, which it has as member variables.
