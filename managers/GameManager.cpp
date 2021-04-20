@@ -61,9 +61,12 @@ void GameManager::handlePlayerInteraction() {
     } else if (this->player.getSymbolInteractingWith() == this->levelManager
             .getGem().getSymbol()) {
         cout << "You picked up a gem!" << endl;
+        this->player.setFoundEntrance(true);
         this->player.setPoints(
                 this->player.getPoints() +
                 this->levelManager.getGem().getValue());
+    } else if (this->player.getSymbolInteractingWith() == SYMBOL_ENTRANCE) {
+        this->player.setIsAtEntrance(true);
     }
 }
 

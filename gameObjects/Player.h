@@ -32,7 +32,6 @@ public:
     void setPoints(int points);
     void setIsAtEntrance(bool playerIsAtEntrance);
     void move(std::string action, Map &map);
-    void selectInteraction(char symbol);
 };
 
 

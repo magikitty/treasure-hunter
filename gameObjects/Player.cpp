@@ -85,24 +85,11 @@ void Player::move(std::string action, Map &map) {
     if (map.getCharAtPosition(newPosition) != map.getSymbolWall()) {
         if (map.getCharAtPosition(newPosition) != map.getSymbolFloor()) {
             this->symbolInteractingWith = map.getCharAtPosition(newPosition);
-            selectInteraction(map.getCharAtPosition(newPosition));
         }
         this->setPosition(newPosition);
         map.setCharAtPosition(this->getSymbol(), this->getPosition());
         map.setCharAtPosition(map.getSymbolFloor(), oldPosition);
     } else {
         cout << "You can't walk through walls!" << endl;
-    }
-}
-
-// TODO: refactor after handleInteraction complete
-void Player::selectInteraction(char symbol) {
-    if (symbol == SYMBOL_ENTRANCE) {
-        this->isAtEntrance = true;
-    } else if (symbol == SYMBOL_MONSTER) {
-//        cout << "You encountered a monster" << endl; // TODO: implement fight
-    } else if (symbol == SYMBOL_GEM) {
-        cout << "You found a gem" << endl; // TODO: implement points
-        this->foundEntrance = true;
     }
 }
