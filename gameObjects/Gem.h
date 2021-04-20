@@ -12,6 +12,7 @@ class Gem : public GameObject {
 private:
     int value;
 public:
+    Gem();
     explicit Gem(int value);
     Gem(char symbol, int value);
     int getValue() const;

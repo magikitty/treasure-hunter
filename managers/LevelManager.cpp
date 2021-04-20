@@ -3,7 +3,7 @@
 
 #include "LevelManager.h"
 
-int LevelManager::getLevel() const {
+int LevelManager::getLevelNumber() const {
     return this->level.getLevelNumber();
 }
 
@@ -13,9 +13,9 @@ void LevelManager::setLevel(int levelNumber) {
 
 // Load new or current level, print level
 void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
-    if (levelCurrent > this->getLevel()) {
+    if (levelCurrent > this->getLevelNumber()) {
         makeNewMap(player);
-        this->setLevel(getLevel() + 1);
+        this->setLevel(getLevelNumber() + 1);
     } else if (player.getFoundEntrance() == true && this->entranceIsAdded ==
     false) {
         this->map.addEntrance();
@@ -39,12 +39,15 @@ void LevelManager::makeNewMap(Player &player) {
                              player.getPosition().getY());
 
     // Add monsters to vector and place symbols on map
-    this->level.addMonstersToVector(Monster(50), this->getNumberOfObjectsToAdd
-    (mapNew));
+//    this->level.addMonstersToVector(Monster(50), this->getNumberOfObjectsToAdd
+//    (mapNew));
+    this->level.setMonster(Monster(5));
+    this->level.addMonstersToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getMonsters(), mapNew);
 
     // Add gems to vector and place symbols on map
-    this->level.addGemsToVector(Gem(50), this->getNumberOfObjectsToAdd(mapNew));
+    this->level.setGem(Gem(2));
+    this->level.addGemsToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getGems(), mapNew);
 
     this->map = mapNew;
@@ -72,4 +75,13 @@ int LevelManager::getNumberOfObjectsToAdd(Map &map) {
 
     int numToAddTotal = (numToAdd + numExtraToAdd);
     return numToAddTotal;
+}
+
+// Return a Monster from current level's monsters vector
+Monster LevelManager::getMonster() {
+    return this->level.getMonster();
+}
+
+Gem LevelManager::getGem() {
+    return this->level.getGem();
 }

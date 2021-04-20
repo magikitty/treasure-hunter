@@ -25,6 +25,7 @@ public:
     void printPlayerStats() const;
     string getUserInput(string message) const;
     void checkShouldQuitGame(string playerAction);
+    void handlePlayerInteraction();
 
     [[noreturn]] void startGame();
     void quitGame() const;

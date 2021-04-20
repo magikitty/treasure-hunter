@@ -24,6 +24,10 @@ bool Player::getFoundEntrance() const {
     return this->foundEntrance;
 }
 
+char Player::getSymbolInteractingWith() const {
+    return this->symbolInteractingWith;
+}
+
 bool Player::getIsAtEntrance() const {
     return this->isAtEntrance;
 }
@@ -48,12 +52,17 @@ void Player::setIsAtEntrance(bool playerIsAtEntrance) {
     this->isAtEntrance = playerIsAtEntrance;
 }
 
+void Player::setSymbolInteractingWith(char symbolInteractingWith) {
+    this->symbolInteractingWith = symbolInteractingWith;
+}
+
 void Player::setPoints(int points) {
     this->points = points;
 }
 
 // Move player char to new map tile
 void Player::move(std::string action, Map &map) {
+    this->symbolInteractingWith = SYMBOL_FLOOR;
     int xPosition = this->getPosition().getX();
     int yPosition = this->getPosition().getY();
     Position oldPosition(xPosition, yPosition);
@@ -75,6 +84,7 @@ void Player::move(std::string action, Map &map) {
     // Check that player does not walk over wall
     if (map.getCharAtPosition(newPosition) != map.getSymbolWall()) {
         if (map.getCharAtPosition(newPosition) != map.getSymbolFloor()) {
+            this->symbolInteractingWith = map.getCharAtPosition(newPosition);
             selectInteraction(map.getCharAtPosition(newPosition));
         }
         this->setPosition(newPosition);
@@ -85,11 +95,12 @@ void Player::move(std::string action, Map &map) {
     }
 }
 
+// TODO: refactor after handleInteraction complete
 void Player::selectInteraction(char symbol) {
     if (symbol == SYMBOL_ENTRANCE) {
         this->isAtEntrance = true;
     } else if (symbol == SYMBOL_MONSTER) {
-        cout << "You encountered a monster" << endl; // TODO: implement fight
+//        cout << "You encountered a monster" << endl; // TODO: implement fight
     } else if (symbol == SYMBOL_GEM) {
         cout << "You found a gem" << endl; // TODO: implement points
         this->foundEntrance = true;

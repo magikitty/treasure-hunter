@@ -46,20 +46,50 @@ std::vector<GameObject> Level::getMonsters() {
     return this->monsters;
 }
 
+// TODO: delete
 // Add specified number of monster objects to monsters vector
-void Level::addMonstersToVector(Monster monster, int numToAdd) {
+//void Level::addMonstersToVector(Monster monster, int numToAdd) {
+//    for (int i = 0; i < numToAdd; i++) {
+//        this->monsters.push_back(monster);
+//    }
+//}
+
+// Add specified number of monster objects to monsters vector
+void Level::addMonstersToVector(int numToAdd) {
     for (int i = 0; i < numToAdd; i++) {
-        this->monsters.push_back(monster);
+        this->monsters.push_back(this->monster);
     }
 }
 
 // Add specified number of gem objects to gems vector
-void Level::addGemsToVector(Gem gem, int numToAdd) {
+//void Level::addGemsToVector(Gem gem, int numToAdd) {
+//    for (int i = 0; i < numToAdd; i++) {
+//        this->gems.push_back(gem);
+//    }
+//}
+
+void Level::addGemsToVector(int numToAdd) {
     for (int i = 0; i < numToAdd; i++) {
-        this->gems.push_back(gem);
+        this->gems.push_back(this->gem);
     }
 }
 
 std::vector<GameObject> Level::getGems() {
     return this->gems;
+}
+
+Monster Level::getMonster() {
+    return this->monster;
+}
+
+void Level::setMonster(Monster monsterNew) {
+    this->monster = monsterNew;
+}
+
+Gem Level::getGem() {
+    return this->gem;
+}
+
+void Level::setGem(Gem gemNew) {
+    this->gem = gemNew;
 }

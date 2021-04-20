@@ -16,13 +16,16 @@ private:
     std::string name;
     bool isAtEntrance = false;
     bool foundEntrance = false;
+    char symbolInteractingWith;
 public:
     Player();
     std::string getName() const;
     int getEnergy() const;
     bool getFoundEntrance() const;
-    int getPoints() const;
+    char getSymbolInteractingWith() const;
     bool getIsAtEntrance() const;
+    int getPoints() const;
+    void setSymbolInteractingWith(char symbolInteractingWith);
     void setName(std::string namePlayer);
     void setEnergy(int energy);
     void setFoundEntrance(bool foundEntrance);

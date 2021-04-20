@@ -12,6 +12,7 @@ class Monster : public GameObject {
 private:
     int strength;
 public:
+    Monster();
     explicit Monster(int strength);
     Monster(char symbol, int strength, int x, int y);
     Monster(int x, int y);

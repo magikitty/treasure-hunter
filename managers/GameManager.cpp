@@ -24,7 +24,7 @@ GameManager::GameManager() {
 }
 
 // Print message to player and return user input
-string GameManager::getUserInput(string message) const{
+string GameManager::getUserInput(string message) const {
     string userInput;
     cout << message;
     getline(cin, userInput);
@@ -32,14 +32,15 @@ string GameManager::getUserInput(string message) const{
 }
 
 // Update the game each time player performs action
-[[noreturn]] void
-GameManager::gameLoop() {
+[[noreturn]] void GameManager::gameLoop() {
     while (true) {
         printPlayerStats();
-        this->levelManager.selectAndPrintLevel(this->player, this->levelCurrent);
+        this->levelManager.selectAndPrintLevel(this->player,
+                                               this->levelCurrent);
         string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
         checkShouldQuitGame(playerAction);
         this->player.move(playerAction, this->levelManager.map);
+        handlePlayerInteraction();
 
         if (this->player.getIsAtEntrance()) {
             this->levelCurrent++;
@@ -48,8 +49,27 @@ GameManager::gameLoop() {
     }
 }
 
+// Handle interaction based on which object's symbol Player moved to on map
+void GameManager::handlePlayerInteraction() {
+    if (this->player.getSymbolInteractingWith() == this->levelManager
+            .getMonster().getSymbol()) {
+        cout << "You fought a monster!" << endl;
+        int monsterStrength = this->levelManager.getMonster().getStrength();
+        int energyPlayer = this->player.getEnergy() - monsterStrength;
+        this->player.setEnergy(energyPlayer);
+        this->player.setPoints(this->player.getPoints() + monsterStrength);
+    } else if (this->player.getSymbolInteractingWith() == this->levelManager
+            .getGem().getSymbol()) {
+        cout << "You picked up a gem!" << endl;
+        this->player.setPoints(
+                this->player.getPoints() +
+                this->levelManager.getGem().getValue());
+    }
+}
+
 void GameManager::printPlayerStats() const {
-    cout << endl << "|| Energy: " << this->player.getEnergy() << " || Points: " <<
+    cout << endl << "|| Energy: " << this->player.getEnergy() << " || Points: "
+         <<
          this->player.getPoints() << " || Level: " << this->levelCurrent;
 }
 

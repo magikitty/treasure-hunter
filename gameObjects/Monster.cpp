@@ -4,6 +4,11 @@
 #include "Monster.h"
 #include <iostream>
 
+Monster::Monster() {
+    this->strength = 1;
+    this->symbol = SYMBOL_MONSTER;
+}
+
 Monster::Monster(int strength) {
     this->strength = strength;
     this->symbol = SYMBOL_MONSTER;

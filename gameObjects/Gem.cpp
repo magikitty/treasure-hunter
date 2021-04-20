@@ -3,6 +3,11 @@
 
 #include "Gem.h"
 
+Gem::Gem() {
+    this->value = 1;
+    this->symbol = SYMBOL_GEM;
+}
+
 Gem::Gem(int value) {
     this->value = value;
     this->symbol = SYMBOL_GEM;
