@@ -30,10 +30,8 @@ public:
     void setMapWidth(int width);
     void setMapHeight(int height);
     void setMovementCost();
-//    void addMonstersToVector(Monster monster, int numToAdd);
     void addMonstersToVector(int numToAdd);
     std::vector<GameObject> getMonsters();
-//    void addGemsToVector(Gem gem, int numToAdd);
     void addGemsToVector(int numToAdd);
     std::vector<GameObject> getGems();
     Monster getMonster();

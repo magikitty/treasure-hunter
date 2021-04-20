@@ -64,15 +64,12 @@ Below is a list of classes used in the game. Each heading is the name of a class
     - std::string name;
     - bool isAtEntrance = false;
     - bool foundEntrance = false;
+    - char symbolInteractingWith;
 - Member functions:
-    - `Player()` is default constructor for instantiating a Player object; it sets the player's initial points, energy,
-      name and position
+    - Player()
     - Getters and setters for the member variables
     - `void move(std::string action, Map &map)` moves the player by moving the player's symbol to a new position based
       on user input
-    - `void selectInteraction(char symbol)` selects an interaction if the player walks onto a tile containing a symbol
-      other than a floor symbol. For example, walking onto an entrance symbol will move the player to a new level and
-      walking onto a magic apple symbol will restore the player's energy.
 - Description: The Player class represents the playable character and is in charge of player actions, such as moving and
   interacting with other objects on the map.
 
@@ -82,9 +79,9 @@ Below is a list of classes used in the game. Each heading is the name of a class
 
 - Member variables: std::vector<std::string> events;
 - Member functions:
-    - `EventLogger()` constructor
-    - `void addEvent(std::string event)` adds a given string to the events vector
-    - `void printEvents()` prints out each string stored in the events vector
+    - EventLogger()
+    - void addEvent(std::string event)
+    - void printEvents()
 - Description: The EventLogger class is responsible for storing for descriptions of events that happen during the game,
   e.g. if the player wins a monster fight or finds a new level. The EventLogger object will print out all the event
   descriptions at the end of the game.
@@ -110,16 +107,20 @@ Below is a list of classes used in the game. Each heading is the name of a class
     - std::vector<GameObject> gems;
     - std::vector<GameObject> monsters;
     - std::vector<GameObject> magicApples;
+    - Monster monster;
+    - Gem gem;
+    - MagicApple magicApple;
 - Member functions
-    - `Level()` default constructor
+    - Level()
     - Getters and setters for member variables
     - `void setMovementCost()` does not have any parameters because it sets the movement cost to equal the number of the
       current level
-    - Functions for adding a given number of monsters or gems to the appropriate vector. E.g. `void addGemsToVector
-      (Gem gem, int numToAdd)` adds the specified number of Gem objects to the gems vector.
+    - void addMonstersToVector(int numToAdd)
+    - void addGemsToVector(int numToAdd);
+    - void addMagicApplesToVector(int numToAdd);
 - Description: The Level class represents a single level in the game. This class is responsible for setting movement
   costs, the level's map size and controls the gems, monsters and magic apples for the current level. The Level class is
-  mainly used by the LevelManager to create new levels.
+  mainly used by the LevelManager to create new levels. It also uses the GameObject child classes.
 
 ### Map
 
@@ -134,8 +135,8 @@ Below is a list of classes used in the game. Each heading is the name of a class
     - Getters and setters for member variables
     - `char* makeCharMap()` creates the map by creating a dynamically allocated array that is filled with characters
       representing wall and floor tiles
-    - `char getCharAtPosition(Position position) const` returns index position corresponding to parameter position
-    - `int getIndexAtPosition(int x, int y) const` returns index position corresponding to parameter coordinates
+    - char getCharAtPosition(Position position) const
+    - int getIndexAtPosition(int x, int y) const
     - void addEntrance();
     - Map& operator= (const Map &map);
     - char getCharAtPosition(int x, int y) const;
@@ -157,6 +158,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
 - Member functions:
     - GameManager();
     - void gameLoop();
+    - void handlePlayerInteraction();
     - void printPlayerStats() const;
     - string getUserInput(string message);
     - void checkShouldQuitGame(string playerAction);
