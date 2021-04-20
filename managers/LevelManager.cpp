@@ -39,8 +39,6 @@ void LevelManager::makeNewMap(Player &player) {
                              player.getPosition().getY());
 
     // Add monsters to vector and place symbols on map
-//    this->level.addMonstersToVector(Monster(50), this->getNumberOfObjectsToAdd
-//    (mapNew));
     this->level.setMonster(Monster(5));
     this->level.addMonstersToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getMonsters(), mapNew);
