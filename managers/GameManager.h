@@ -23,7 +23,7 @@ public:
 
     [[noreturn]] void gameLoop();
     void printPlayerStats() const;
-    string getUserInput(string message);
+    string getUserInput(string message) const;
     void checkShouldQuitGame(string playerAction);
 
     [[noreturn]] void startGame();

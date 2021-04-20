@@ -29,7 +29,6 @@ void LevelManager::makeNewMap(Player &player) {
     this->entranceIsAdded = false;
     player.setFoundEntrance(false);
     this->level.setMapWidth(this->level.getMapWidth()+1);
-    this->level.setMapHeight(this->level.getMapHeight()+1);
 
     // Create new map
     Map mapNew(this->level.getMapWidth(), this->level.getMapHeight());
@@ -60,7 +59,7 @@ void LevelManager::addGameObjectsToMap(vector<GameObject> objects, Map &map) {
 
 // Return number of game objects that should be added to the map
 int LevelManager::getNumberOfObjectsToAdd(Map &map) {
-    int numToAdd = (map.getWidth() * map.getHeight()) / 50;
+    int numToAdd = (map.getWidth() * map.getHeight()) / 60;
     int numExtraToAdd;
 
     if (this->level.getLevelNumber() < 5) {

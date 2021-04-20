@@ -12,10 +12,10 @@ GameManager::GameManager() {
     this->player = Player();
 }
 
-// TODO: write game instructions
 // Instantiate necessary game elements
 [[noreturn]] void GameManager::startGame() {
     cout << MESSAGE_WELCOME << endl;
+    cout << MESSAGE_INSTRUCTIONS << endl;
 
     player.setName(getUserInput(MESSAGE_ENTER_NAME));
     cout << "Hello " << player.getName() << "!" << endl;
@@ -24,7 +24,7 @@ GameManager::GameManager() {
 }
 
 // Print message to player and return user input
-string GameManager::getUserInput(string message) {
+string GameManager::getUserInput(string message) const{
     string userInput;
     cout << message;
     getline(cin, userInput);
@@ -56,9 +56,12 @@ void GameManager::printPlayerStats() const {
 // Quit game if user portals out or runs out of energy
 void GameManager::checkShouldQuitGame(string playerAction) {
     if (playerAction == PORTAL_OUT) {
-        cout << MESSAGE_PORTAL_OUT << endl;
-        this->eventLogger.printEvents();
-        quitGame();
+        string quitConfirmation = getUserInput(MESSAGE_CONFIRM_QUIT);
+        if (quitConfirmation == QUIT_YES) {
+            cout << MESSAGE_PORTAL_OUT << endl;
+            this->eventLogger.printEvents();
+            quitGame();
+        }
     } else if (this->player.getEnergy() == 0) {
         cout << MESSAGE_PLAYER_DEAD << endl;
         eventLogger.printEvents();
@@ -66,6 +69,5 @@ void GameManager::checkShouldQuitGame(string playerAction) {
     }
 }
 
-// TODO: add confirmation for quit
 // Quit game
 void GameManager::quitGame() const { exit(0); }
