@@ -41,7 +41,7 @@ string GameManager::getUserInput(string message) const {
         checkShouldQuitGame(playerAction);
         this->player.move(playerAction, this->levelManager.map);
         this->player.setEnergy(this->player.getEnergy() - this->levelManager
-        .getMovementCost());
+                .getMovementCost());
         handlePlayerInteraction();
 
         if (this->player.getIsAtEntrance()) {
@@ -60,6 +60,7 @@ void GameManager::handlePlayerInteraction() {
         int energyPlayer = this->player.getEnergy() - monsterStrength;
         this->player.setEnergy(energyPlayer);
         this->player.setPoints(this->player.getPoints() + monsterStrength);
+        this->eventLogger.addEvent(MESSAGE_FOUGHT_MONSTER);
     } else if (this->player.getSymbolInteractingWith() == this->levelManager
             .getGem().getSymbol()) {
         cout << MESSAGE_FOUND_GEM << endl;
@@ -67,14 +68,18 @@ void GameManager::handlePlayerInteraction() {
         this->player.setPoints(
                 this->player.getPoints() +
                 this->levelManager.getGem().getValue());
+        this->eventLogger.addEvent(MESSAGE_FOUND_GEM);
     } else if (this->player.getSymbolInteractingWith() == this->levelManager
             .getMagicApple().getSymbol()) {
         cout << MESSAGE_FOUND_MAGIC_APPLE << endl;
         int energyRestored = this->levelManager.getMagicApple().getEnergyRestored();
         int energyPlayer = this->player.getEnergy() + energyRestored;
         this->player.setEnergy(energyPlayer);
+        this->eventLogger.addEvent(MESSAGE_FOUND_MAGIC_APPLE);
     } else if (this->player.getSymbolInteractingWith() == SYMBOL_ENTRANCE) {
         this->player.setIsAtEntrance(true);
+        this->eventLogger.addEvent(
+                MESSAGE_ENTERED_LEVEL + to_string(this->levelCurrent+1));
     }
 }
 

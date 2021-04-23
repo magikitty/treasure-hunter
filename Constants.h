@@ -17,7 +17,9 @@ using namespace std;
 const string MESSAGE_CONFIRM_QUIT = "Are you sure you want to quit the game? "
                                     "(y/n) ";
 const string MESSAGE_ENTER_NAME = "Enter your name: ";
-const string MESSAGE_GAME_HISTORY = "Here is a history of your game:";
+const string MESSAGE_GAME_HISTORY = "\n-------------------------------\n"
+                                    "Here is a history of your game:"
+                                    "\n-------------------------------";
 const string MESSAGE_INSTRUCTIONS = "-Move by pressing w, a, s or d and enter."
                                     "\n-Moving consumes energy and if "
                                     "your energy reaches 0 the game ends.\n-You"
@@ -41,9 +43,10 @@ const string MESSAGE_WELCOME = "\nWelcome to Treasure Hunter!\n";
 /* Event Messages */
 /*****************************************************************************/
 
-const string MESSAGE_FOUND_GEM = "You picked up a gem!";
-const string MESSAGE_FOUND_MAGIC_APPLE = "You picked up a magic apple!";
-const string MESSAGE_FOUGHT_MONSTER = "You fought a monster!";
+const string MESSAGE_ENTERED_LEVEL = "You entered level ";
+const string MESSAGE_FOUND_GEM = "You picked up a gem";
+const string MESSAGE_FOUND_MAGIC_APPLE = "You picked up a magic apple";
+const string MESSAGE_FOUGHT_MONSTER = "You fought a monster";
 
 /*****************************************************************************/
 /* Movement & player commands */
