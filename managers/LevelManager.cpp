@@ -18,6 +18,7 @@ void LevelManager::selectAndPrintLevel(Player &player, int levelCurrent) {
     if (levelCurrent > this->getLevelNumber()) {
         makeNewMap(player);
         this->setLevel(getLevelNumber() + 1);
+        this->level.setMovementCost(this->getLevelNumber());
     } else if (player.getFoundEntrance() == true && this->entranceIsAdded ==
     false) {
         this->map.addEntrance();
@@ -95,4 +96,9 @@ Gem LevelManager::getGem() {
 // Return Magic Apple member variable of Level class
 MagicApple LevelManager::getMagicApple() {
     return this->level.getMagicApple();
+}
+
+int LevelManager::getMovementCost() const {
+    std::cout << "Movement cost is: " << this->level.getMovementCost() << endl; //debugging
+    return this->level.getMovementCost();
 }

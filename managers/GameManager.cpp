@@ -40,6 +40,8 @@ string GameManager::getUserInput(string message) const {
         string playerAction = getUserInput(MESSAGE_PLAYER_ACTION);
         checkShouldQuitGame(playerAction);
         this->player.move(playerAction, this->levelManager.map);
+        this->player.setEnergy(this->player.getEnergy() - this->levelManager
+        .getMovementCost());
         handlePlayerInteraction();
 
         if (this->player.getIsAtEntrance()) {

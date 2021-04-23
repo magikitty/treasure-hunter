@@ -25,6 +25,7 @@ int Level::getMapWidth() const {
     return this->mapWidth;
 }
 
+// Return movement cost
 int Level::getMovementCost() const {
     return this->movementCost;
 }
@@ -37,9 +38,8 @@ void Level::setMapWidth(int width) {
     this->mapWidth = width;
 }
 
-// Movement cost to equal current level number
-void Level::setMovementCost() {
-    this->movementCost = this->getLevelNumber();
+void Level::setMovementCost(int movementCostNew) {
+    this->movementCost = movementCostNew;
 }
 
 std::vector<GameObject> Level::getMonsters() {

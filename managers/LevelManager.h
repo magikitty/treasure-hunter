@@ -24,10 +24,11 @@ public:
     Gem getGem();
     MagicApple getMagicApple();
     Monster getMonster();
+    int getMovementCost() const;
     int getNumberOfObjectsToAdd(Map &map);
     void makeNewMap(Player &player);
-    void setLevel(int levelNumber);
     void selectAndPrintLevel(Player &player, int levelCurrent);
+    void setLevel(int levelNumber);
 };
 
 

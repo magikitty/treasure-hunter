@@ -33,7 +33,7 @@ public:
     void setLevelNumber(int number);
     void setMapHeight(int height);
     void setMapWidth(int width);
-    void setMovementCost();
+    void setMovementCost(int movementCostNew);
 
     void addGemsToVector(int numToAdd);
     void addMagicApplesToVector(int numToAdd);
