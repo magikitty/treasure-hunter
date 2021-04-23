@@ -93,7 +93,7 @@ void GameManager::checkShouldQuitGame(string playerAction) {
             this->eventLogger.printEvents();
             quitGame();
         }
-    } else if (this->player.getEnergy() == 0) {
+    } else if (this->player.getEnergy() < 1) {
         cout << MESSAGE_PLAYER_DEAD << endl;
         eventLogger.printEvents();
         quitGame();
