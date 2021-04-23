@@ -99,6 +99,5 @@ MagicApple LevelManager::getMagicApple() {
 }
 
 int LevelManager::getMovementCost() const {
-    std::cout << "Movement cost is: " << this->level.getMovementCost() << endl; //debugging
     return this->level.getMovementCost();
 }

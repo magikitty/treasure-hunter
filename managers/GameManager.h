@@ -20,11 +20,15 @@ private:
     Player player;
 public:
     GameManager();
-    [[noreturn]] void gameLoop();
-    void printPlayerStats() const;
-    string getUserInput(string message) const;
     void checkShouldQuitGame(string playerAction);
+    [[noreturn]] void gameLoop();
+    string getUserInput(string message) const;
+    void handleInteractionWithEntrance();
+    void handleInteractionWithGem();
+    void handleInteractionWithMagicApple();
+    void handleInteractionWithMonster();
     void handlePlayerInteraction();
+    void printPlayerStats() const;
     [[noreturn]] void startGame();
     void quitGame() const;
 };
