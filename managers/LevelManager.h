@@ -7,6 +7,7 @@
 #include "../gameObjects/GameObject.h"
 #include "../gameObjects/Monster.h"
 #include "../gameObjects/Gem.h"
+#include "../gameObjects/MagicApple.h"
 
 #ifndef TREASURE_HUNTER_LEVELMANAGER_H
 #define TREASURE_HUNTER_LEVELMANAGER_H
@@ -17,15 +18,16 @@ private:
     Level level;
     bool entranceIsAdded = false;
 public:
-    Map map; // TODO refactor with getter-setter
+    Map map;
+    void addGameObjectsToMap(std::vector<GameObject> objects, Map &map);
     int getLevelNumber() const;
+    Gem getGem();
+    MagicApple getMagicApple();
+    Monster getMonster();
+    int getNumberOfObjectsToAdd(Map &map);
     void makeNewMap(Player &player);
     void setLevel(int levelNumber);
     void selectAndPrintLevel(Player &player, int levelCurrent);
-    int getNumberOfObjectsToAdd(Map &map);
-    void addGameObjectsToMap(std::vector<GameObject> objects, Map &map);
-    Monster getMonster();
-    Gem getGem();
 };
 
 

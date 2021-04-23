@@ -3,8 +3,14 @@
 
 #include "MagicApple.h"
 
-MagicApple::MagicApple(char symbol, int energyRestored) : GameObject(symbol) {
+MagicApple::MagicApple() {
+    this->energyRestored = 1;
+    this->symbol = SYMBOL_MAGIC_APPLE;
+}
+
+MagicApple::MagicApple(int energyRestored) {
     this->energyRestored = energyRestored;
+    this->symbol = SYMBOL_MAGIC_APPLE;
 }
 
 int MagicApple::getEnergyRestored() const {

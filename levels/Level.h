@@ -4,6 +4,7 @@
 #include "../Constants.h"
 #include "../gameObjects/Monster.h"
 #include "../gameObjects/Gem.h"
+#include "../gameObjects/MagicApple.h"
 #include "vector"
 
 #ifndef TREASURE_HUNTER_LEVEL_H
@@ -18,26 +19,34 @@ private:
     std::vector<GameObject> gems;
     std::vector<GameObject> monsters;
     std::vector<GameObject> magicApples;
-    Monster monster;
     Gem gem;
+    MagicApple magicApple;
+    Monster monster;
+
 public:
     Level();
-    int getMapWidth() const;
-    int getMapHeight() const;
-    int getMovementCost() const;
-    void setLevelNumber(int number);
     int getLevelNumber() const;
-    void setMapWidth(int width);
+    int getMapHeight() const;
+    int getMapWidth() const;
+    int getMovementCost() const;
+
+    void setLevelNumber(int number);
     void setMapHeight(int height);
+    void setMapWidth(int width);
     void setMovementCost();
-    void addMonstersToVector(int numToAdd);
-    std::vector<GameObject> getMonsters();
+
     void addGemsToVector(int numToAdd);
+    void addMagicApplesToVector(int numToAdd);
+    void addMonstersToVector(int numToAdd);
     std::vector<GameObject> getGems();
+    std::vector<GameObject> getMagicApples();
+    std::vector<GameObject> getMonsters();
     Monster getMonster();
     void setMonster(Monster monsterNew);
     Gem getGem();
     void setGem(Gem gemNew);
+    MagicApple getMagicApple();
+    void setMagicApple(MagicApple magicAppleNew);
 };
 
 

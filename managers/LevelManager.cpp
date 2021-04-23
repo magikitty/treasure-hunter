@@ -3,10 +3,12 @@
 
 #include "LevelManager.h"
 
+// Get level number
 int LevelManager::getLevelNumber() const {
     return this->level.getLevelNumber();
 }
 
+// Set level number
 void LevelManager::setLevel(int levelNumber) {
     this->level.setLevelNumber(levelNumber);
 }
@@ -48,6 +50,11 @@ void LevelManager::makeNewMap(Player &player) {
     this->level.addGemsToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getGems(), mapNew);
 
+    // Add magic apples to vector and place symbols on map
+    this->level.setMagicApple(MagicApple(2));
+    this->level.addMagicApplesToVector(this->getNumberOfObjectsToAdd(mapNew));
+    addGameObjectsToMap(this->level.getMagicApples(), mapNew);
+
     this->map = mapNew;
 }
 
@@ -75,11 +82,17 @@ int LevelManager::getNumberOfObjectsToAdd(Map &map) {
     return numToAddTotal;
 }
 
-// Return a Monster from current level's monsters vector
+// Return Monster member variable of Level class
 Monster LevelManager::getMonster() {
     return this->level.getMonster();
 }
 
+// Return Gem member variable of Level class
 Gem LevelManager::getGem() {
     return this->level.getGem();
+}
+
+// Return Magic Apple member variable of Level class
+MagicApple LevelManager::getMagicApple() {
+    return this->level.getMagicApple();
 }

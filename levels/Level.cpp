@@ -53,16 +53,31 @@ void Level::addMonstersToVector(int numToAdd) {
     }
 }
 
+// Add specified number of gem objects to gems vector
 void Level::addGemsToVector(int numToAdd) {
     for (int i = 0; i < numToAdd; i++) {
         this->gems.push_back(this->gem);
     }
 }
 
+// Add specified number of magic apple objects to magicApples vector
+void Level::addMagicApplesToVector(int numToAdd) {
+    for (int i = 0; i < numToAdd; i++) {
+        this->magicApples.push_back(this->magicApple);
+    }
+}
+
+// Return gems vector
 std::vector<GameObject> Level::getGems() {
     return this->gems;
 }
 
+// Return magicApples vector
+std::vector<GameObject> Level::getMagicApples() {
+    return this->magicApples;
+}
+
+// Return monsters vector
 Monster Level::getMonster() {
     return this->monster;
 }
@@ -77,4 +92,12 @@ Gem Level::getGem() {
 
 void Level::setGem(Gem gemNew) {
     this->gem = gemNew;
+}
+
+MagicApple Level::getMagicApple() {
+    return this->magicApple;
+}
+
+void Level::setMagicApple(MagicApple magicAppleNew) {
+    this->magicApple = magicAppleNew;
 }
