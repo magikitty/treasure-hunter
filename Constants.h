@@ -11,9 +11,11 @@ using namespace std;
 
 
 /*****************************************************************************/
-/* Messages */
+/* General Messages */
 /*****************************************************************************/
 
+const string MESSAGE_CONFIRM_QUIT = "Are you sure you want to quit the game? "
+                                    "(y/n) ";
 const string MESSAGE_ENTER_NAME = "Enter your name: ";
 const string MESSAGE_GAME_HISTORY = "Here is a history of your game:";
 const string MESSAGE_INSTRUCTIONS = "-Move by pressing w, a, s or d and enter."
@@ -33,9 +35,15 @@ const string MESSAGE_PLAYER_DEAD = "You have run out of energy and perished "
                                    "in the dungeon. Game over.";
 const string MESSAGE_PORTAL_OUT = "You portal out of the dungeon and so ends "
                                   "your treasure hunt. Game over.";
-const string MESSAGE_CONFIRM_QUIT = "Are you sure you want to quit the game? "
-                                    "(y/n) ";
 const string MESSAGE_WELCOME = "\nWelcome to Treasure Hunter!\n";
+
+/*****************************************************************************/
+/* Event Messages */
+/*****************************************************************************/
+
+const string MESSAGE_FOUND_GEM = "You picked up a gem!";
+const string MESSAGE_FOUND_MAGIC_APPLE = "You picked up a magic apple!";
+const string MESSAGE_FOUGHT_MONSTER = "You fought a monster!";
 
 /*****************************************************************************/
 /* Movement & player commands */

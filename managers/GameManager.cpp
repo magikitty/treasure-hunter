@@ -53,18 +53,24 @@ string GameManager::getUserInput(string message) const {
 void GameManager::handlePlayerInteraction() {
     if (this->player.getSymbolInteractingWith() == this->levelManager
             .getMonster().getSymbol()) {
-        cout << "You fought a monster!" << endl;
+        cout << MESSAGE_FOUGHT_MONSTER << endl;
         int monsterStrength = this->levelManager.getMonster().getStrength();
         int energyPlayer = this->player.getEnergy() - monsterStrength;
         this->player.setEnergy(energyPlayer);
         this->player.setPoints(this->player.getPoints() + monsterStrength);
     } else if (this->player.getSymbolInteractingWith() == this->levelManager
             .getGem().getSymbol()) {
-        cout << "You picked up a gem!" << endl;
+        cout << MESSAGE_FOUND_GEM << endl;
         this->player.setFoundEntrance(true);
         this->player.setPoints(
                 this->player.getPoints() +
                 this->levelManager.getGem().getValue());
+    } else if (this->player.getSymbolInteractingWith() == this->levelManager
+            .getMagicApple().getSymbol()) {
+        cout << MESSAGE_FOUND_MAGIC_APPLE << endl;
+        int energyRestored = this->levelManager.getMagicApple().getEnergyRestored();
+        int energyPlayer = this->player.getEnergy() + energyRestored;
+        this->player.setEnergy(energyPlayer);
     } else if (this->player.getSymbolInteractingWith() == SYMBOL_ENTRANCE) {
         this->player.setIsAtEntrance(true);
     }
