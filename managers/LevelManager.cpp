@@ -42,17 +42,17 @@ void LevelManager::makeNewMap(Player &player) {
                              player.getPosition().getY());
 
     // Add monsters to vector and place symbols on map
-    this->level.setMonster(Monster(5));
+    this->level.setMonster(Monster(getGameObjectValue(3)));
     this->level.addMonstersToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getMonsters(), mapNew);
 
     // Add gems to vector and place symbols on map
-    this->level.setGem(Gem(2));
+    this->level.setGem(Gem(getGameObjectValue(2)));
     this->level.addGemsToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getGems(), mapNew);
 
     // Add magic apples to vector and place symbols on map
-    this->level.setMagicApple(MagicApple(2));
+    this->level.setMagicApple(MagicApple(getGameObjectValue(4)));
     this->level.addMagicApplesToVector(this->getNumberOfObjectsToAdd(mapNew));
     addGameObjectsToMap(this->level.getMagicApples(), mapNew);
 
@@ -81,6 +81,10 @@ int LevelManager::getNumberOfObjectsToAdd(Map &map) {
 
     int numToAddTotal = (numToAdd + numExtraToAdd);
     return numToAddTotal;
+}
+
+int LevelManager::getGameObjectValue(int extraValue) const {
+    return (this->getLevelNumber() + extraValue);
 }
 
 // Return Monster member variable of Level class

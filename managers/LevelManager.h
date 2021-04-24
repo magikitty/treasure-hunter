@@ -20,6 +20,7 @@ private:
 public:
     Map map;
     void addGameObjectsToMap(std::vector<GameObject> objects, Map &map);
+    int getGameObjectValue(int extraValue) const;
     int getLevelNumber() const;
     Gem getGem();
     MagicApple getMagicApple();
