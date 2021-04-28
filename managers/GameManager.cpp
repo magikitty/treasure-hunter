@@ -116,11 +116,13 @@ void GameManager::checkShouldQuitGame(string playerAction) {
         string quitConfirmation = getUserInput(MESSAGE_CONFIRM_QUIT);
         if (quitConfirmation == QUIT_YES) {
             cout << MESSAGE_PORTAL_OUT << endl;
+            eventLogger.addEvent(MESSAGE_PORTALED);
             this->eventLogger.printEvents();
             quitGame();
         }
     } else if (this->player.getEnergy() < 1) {
         cout << MESSAGE_PLAYER_DEAD << endl;
+        eventLogger.addEvent(MESSAGE_DIED);
         eventLogger.printEvents();
         quitGame();
     }

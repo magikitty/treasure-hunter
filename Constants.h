@@ -44,10 +44,14 @@ const string MESSAGE_WELCOME = "\nWelcome to Treasure Hunter!\n";
 /* Event Messages */
 /*****************************************************************************/
 
+const string MESSAGE_DIED = "You ran out of energy and perished in the "
+                            "dungeon.";
 const string MESSAGE_ENTERED_LEVEL = "You entered level ";
 const string MESSAGE_FOUND_GEM = "You picked up a gem";
 const string MESSAGE_FOUND_MAGIC_APPLE = "You picked up a magic apple";
 const string MESSAGE_FOUGHT_MONSTER = "You fought a monster";
+const string MESSAGE_PORTALED = "You portaled out of the dungeon and ended "
+                                  "your treasure hunt.";
 
 /*****************************************************************************/
 /* Movement & player commands */
