@@ -3,6 +3,7 @@
 
 #include "Level.h"
 
+// Level constructor
 Level::Level() {
     this->levelNumber = 0;
     this->levelMaxNumber = LEVEL_MAX;
@@ -25,7 +26,6 @@ int Level::getMapWidth() const {
     return this->mapWidth;
 }
 
-// Return movement cost
 int Level::getMovementCost() const {
     return this->movementCost;
 }

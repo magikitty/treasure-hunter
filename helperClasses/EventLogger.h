@@ -15,6 +15,7 @@ public:
     EventLogger();
     void addEvent(std::string event);
     void printEvents();
+    std::string getTime();
 };
 
 

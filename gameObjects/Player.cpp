@@ -44,10 +44,12 @@ void Player::setEnergy(int energy) {
     this->energy = energy;
 }
 
+// Set to true if player finds first gem in level
 void Player::setFoundEntrance(bool foundEntrance) {
     this->foundEntrance = foundEntrance;
 }
 
+// Set bool for whether or not player is on entrance tile
 void Player::setIsAtEntrance(bool playerIsAtEntrance) {
     this->isAtEntrance = playerIsAtEntrance;
 }

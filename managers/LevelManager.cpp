@@ -83,6 +83,7 @@ int LevelManager::getNumberOfObjectsToAdd(Map &map) {
     return numToAddTotal;
 }
 
+// Return value for game object e.g. strength for monsters, energy for apples
 int LevelManager::getGameObjectValue(int extraValue) const {
     return (this->getLevelNumber() + extraValue);
 }
@@ -102,6 +103,7 @@ MagicApple LevelManager::getMagicApple() {
     return this->level.getMagicApple();
 }
 
+// Return current level's movement cost
 int LevelManager::getMovementCost() const {
     return this->level.getMovementCost();
 }
