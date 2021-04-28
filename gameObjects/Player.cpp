@@ -54,6 +54,7 @@ void Player::setIsAtEntrance(bool playerIsAtEntrance) {
     this->isAtEntrance = playerIsAtEntrance;
 }
 
+// Set symbol player is currently interacting with
 void Player::setSymbolInteractingWith(char symbolInteractingWith) {
     this->symbolInteractingWith = symbolInteractingWith;
 }
@@ -80,7 +81,7 @@ void Player::move(std::string action, Map &map) {
         newPosition = Position((xPosition + 1), yPosition);
     } else if (action == PORTAL_OUT) {
     } else {
-        std::cout << "Invalid action" << std::endl;
+        std::cout << MESSAGE_INVALID_ACTION << std::endl;
     }
 
     // Check that player does not walk over wall

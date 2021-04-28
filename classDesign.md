@@ -82,6 +82,7 @@ Below is a list of classes used in the game. Each heading is the name of a class
     - EventLogger()
     - void addEvent(std::string event)
     - void printEvents()
+    - std::string getTime();
 - Description: The EventLogger class is responsible for storing for descriptions of events that happen during the game,
   e.g. if the player wins a monster fight or finds a new level. The EventLogger object will print out all the event
   descriptions at the end of the game.
@@ -157,13 +158,38 @@ Below is a list of classes used in the game. Each heading is the name of a class
     - Player player;
 - Member functions:
     - GameManager();
-    - void gameLoop();
+    - void checkShouldQuitGame(string playerAction);
+    - [[noreturn]] void gameLoop();
+    - string getUserInput(string message) const;
+    - void handleInteractionWithEntrance();
+    - void handleInteractionWithGem();
+    - void handleInteractionWithMagicApple();
+    - void handleInteractionWithMonster();
     - void handlePlayerInteraction();
     - void printPlayerStats() const;
-    - string getUserInput(string message);
-    - void checkShouldQuitGame(string playerAction);
-    - void startGame();
+    - [[noreturn]] void startGame();
     - void quitGame() const;
 - Description: The GameManager manages the game by instantiating other objects and calling necessary functions to make
   the game run. The GameManager starts and quits the game. The GameManager works mainly with the LevelManager,
   EventLogger and Player classes, which it has as member variables.
+  
+### LevelManager
+
+- Member variables:
+    - Level level;
+    - bool entranceIsAdded = false;
+    - Map map;
+- Member functions:
+    - void addGameObjectsToMap(std::vector<GameObject> objects, Map &map);
+    - int getGameObjectValue(int extraValue) const;
+    - int getLevelNumber() const;
+    - Gem getGem();
+    - MagicApple getMagicApple();
+    - Monster getMonster();
+    - int getMovementCost() const;
+    - int getNumberOfObjectsToAdd(Map &map);
+    - void makeNewMap(Player &player);
+    - void selectAndPrintLevel(Player &player, int levelCurrent);
+    - void setLevel(int levelNumber);
+- Description: The LevelManager manages the loading and displaying of different levels. It also manages the game 
+  objects for each level. The LevelManager works with the GameManager and the GameObject child classes to create levels.

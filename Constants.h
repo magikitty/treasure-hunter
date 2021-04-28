@@ -20,6 +20,7 @@ const string MESSAGE_ENTER_NAME = "Enter your name: ";
 const string MESSAGE_GAME_HISTORY = "\n-------------------------------\n"
                                     "Here is a history of your game:"
                                     "\n-------------------------------";
+const string MESSAGE_INVALID_ACTION = "Invalid action";
 const string MESSAGE_INSTRUCTIONS = "-Move by pressing w, a, s or d and enter."
                                     "\n-Moving consumes energy and if "
                                     "your energy reaches 0 the game ends.\n-You"

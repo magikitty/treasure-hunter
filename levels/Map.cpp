@@ -16,6 +16,7 @@ Map::Map(int width, int height) {
     this->charMap = makeCharMap();
 }
 
+// Return dynamically allocated character array for map
 char *Map::makeCharMap() {
     charMap = new char[height * width];
 
@@ -44,11 +45,13 @@ char *Map::makeCharMap() {
     return charMap;
 }
 
+// Add entrance to map at random position
 void Map::addEntrance() {
     Position entrancePosition = getRandomPosition();
     setCharAtPosition(this->symbolEntrance, entrancePosition);
 }
 
+// Operator overload for =
 Map &Map::operator=(const Map &map) {
     this->width = map.getWidth();
     this->height = map.getHeight();
@@ -60,6 +63,7 @@ Map &Map::operator=(const Map &map) {
     return *this;
 }
 
+// Map destructor
 Map::~Map() {
     delete[] this->charMap;
 }
@@ -109,6 +113,7 @@ void Map::setHeight(int height) {
     this->height = height;
 }
 
+// Print map with assigned characters
 void Map::printMap() {
     int mapSize = (this->height * this->width);
     std::cout << std::endl;
@@ -122,24 +127,29 @@ void Map::printMap() {
     std::cout << std::endl;
 }
 
+// Return index number of map array that corresponds to position parameter
 int Map::getIndexAtPosition(int x, int y) const {
     return (x + (this->getWidth() * y));
 }
 
+// Return character in map at coordinate parameters
 char Map::getCharAtPosition(int x, int y) const {
     return this->charMap[this->getIndexAtPosition(x, y)];
 }
 
+// Return character in map at position parameter
 char Map::getCharAtPosition(Position position) const {
     return this->charMap[this->getIndexAtPosition(
             position.getX(),
             position.getY())];
 }
 
+// Add character to map at coordinate position
 void Map::setCharAtPosition(char symbolToAdd, int x, int y) {
     this->charMap[this->getIndexAtPosition(x, y)] = symbolToAdd;
 }
 
+// Add character to map at position
 void Map::setCharAtPosition(char symbolToAdd, Position position) {
     this->charMap[this->getIndexAtPosition(position.getX(), position.getY())]
             = symbolToAdd;
